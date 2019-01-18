@@ -4,7 +4,7 @@
 
 const express = require("express");
 const path = require("path");
-const session = require('express-session');
+// const session = require('express-session');
 
 const app = express();
 const http = require("http").Server(app);
@@ -14,12 +14,12 @@ const io = require("socket.io")(http);
 
 const publicPath = path.resolve(__dirname, "..", "client", "dist");
 
-set up sessions (so that If you log in and refresh the page, you should stay logged in!)
-app.use(session({
-  secret: 'session-secret',
-  resave: 'false',
-  saveUninitialized: 'true'
-}));
+// set up sessions (so that If you log in and refresh the page, you should stay logged in!)
+// app.use(session({
+//   secret: 'session-secret',
+//   resave: 'false',
+//   saveUninitialized: 'true'
+// }));
 
 // hook up passport
 app.use(passport.initialize());
