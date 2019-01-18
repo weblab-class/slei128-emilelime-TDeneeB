@@ -1,14 +1,14 @@
 import React from "react";
 
-class Root extends React.Component {
+class Game extends React.Component {
   render() {
     return (
       <div>
-        Root
+        Game Here
       </div>
     )
     ;
   }
 }
 
-export default Root;
+export default Game;
