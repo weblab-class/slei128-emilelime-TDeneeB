@@ -4,13 +4,40 @@
 
 const express = require("express");
 const path = require("path");
+const session = require('express-session');
 
 const app = express();
 const http = require("http").Server(app);
+const db = require('./db');
+const passport = require('./passport');
 const io = require("socket.io")(http);
 
 const publicPath = path.resolve(__dirname, "..", "client", "dist");
 
+set up sessions (so that If you log in and refresh the page, you should stay logged in!)
+app.use(session({
+  secret: 'session-secret',
+  resave: 'false',
+  saveUninitialized: 'true'
+}));
+
+// hook up passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// authentication routes
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
+
+app.get(
+  '/auth/google/callback',
+  passport.authenticate(
+    'google',
+    { failureRedirect: '/login' }
+  ),
+  function(req, res) {
+    res.redirect('/');
+  }
+);
 
 app.use(express.static(publicPath));
 

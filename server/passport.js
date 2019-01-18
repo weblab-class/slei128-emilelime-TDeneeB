@@ -9,10 +9,11 @@ const User = require('./models/user');
 
 // set up passport configs
 passport.use(new GoogleStrategy({
-  clientID: '1060162542849-7mh2la92i9nt5e14eknth2p0ai1krdna.apps.googleusercontent.com', // config variables
-  clientSecret: 'hEYUL7GBX7hHEY-55XXm_Fmf',
+  clientID: '206652935257-o7644qrnjso40gjujf83a6tien1nl64i.apps.googleusercontent.com', // added our own
+  clientSecret: '59KtB3S7gWvulOropozIvpFT', // added our own
   callbackURL: '/auth/google/callback'
 }, function(accessToken, refreshToken, profile, done) {
+//Look up the user by the “googleid” supplied by Google.
   User.findOne({
     'googleid': profile.id
   }, function(err, user) {
