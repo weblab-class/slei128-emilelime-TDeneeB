@@ -4,8 +4,9 @@ import "../css/app.css";
 import Route from "react-router-dom/es/Route";
 import Switch from "react-router-dom/es/Switch";
 import Game from "./Game";
-import Profile from "./Profile"
-import NavBar from "./NavBar"
+import Profile from "./Profile";
+import NavBar from "./NavBar";
+import Home from "./Home";
 
 class App extends React.Component {
 
@@ -21,9 +22,7 @@ class App extends React.Component {
       this.getUser();
   }
 
-  goToAuth = () => {
-    //google auth
-  }
+
   render() {
     return (
       <div className="app">
@@ -31,15 +30,11 @@ class App extends React.Component {
         <NavBar userInfo={this.state.userInfo} logout={this.logout}/>
 
         <Switch>
-          <Route exact path="/" component={Game} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/profile/:user" component={Profile} />
-        </Switch>
+          <Route exact path="/game/:user" component={Game} />
 
-        //write function to render the below IF user is Not logged in
-        <div className="App-header">
-            <h2>{"Welcome to HotTake."}</h2>
-            <button type="submit" className="btn btn-outline-warning give-padding" onClick={this.goToAuth}>Create an Account</button>
-        </div>
+        </Switch>
 
       </div>
 

@@ -1,15 +1,12 @@
-//COPIED FROM CATBOOK, EDIT
-//COPIED FROM CATBOOK, EDIT
-//COPIED FROM CATBOOK, EDIT
 
 // import node modules
 const mongoose = require('mongoose');
 
 // define a schema
 const UserModelSchema = new mongoose.Schema ({
-  name        	: String,
-  googleid     	: String,
-  last_post   	: String,
+  userid        : String,
+  score     	  : String,
+  currentgames  : [],
 });
 
 // compile model from schema

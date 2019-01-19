@@ -1,10 +1,7 @@
-//COPIED FROM CATBOOK, EDIT
-//COPIED FROM CATBOOK, EDIT
-//COPIED FROM CATBOOK, EDIT
-
 const express = require("express");
 const path = require("path");
 // const session = require('express-session');
+const bodyParser = require("body-parser");
 
 const app = express();
 const http = require("http").Server(app);
@@ -14,12 +11,21 @@ const io = require("socket.io")(http);
 
 const publicPath = path.resolve(__dirname, "..", "client", "dist");
 
+const api = require("./api");
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
+app.use("/api", api); //this tells app to use Api.js
+// app.use("/auth", auth);
+
 // set up sessions (so that If you log in and refresh the page, you should stay logged in!)
 // app.use(session({
 //   secret: 'session-secret',
 //   resave: 'false',
 //   saveUninitialized: 'true'
 // }));
+
 
 // hook up passport
 app.use(passport.initialize());

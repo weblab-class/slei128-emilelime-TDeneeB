@@ -6,11 +6,11 @@ class NavBar extends Component {
         super(props);
     }
 
+  // <img src={logo} width="100" height="30" className="d-inline-block align-top" alt=""></img>
     render() {
         return (
           <nav className="navbar navbar-light bg-light">
             <div className="navbar-brand">
-            // <img src={logo} width="100" height="30" className="d-inline-block align-top" alt=""></img>
             HotTake
             </div>
             <div className="navbar-nav">
@@ -19,8 +19,9 @@ class NavBar extends Component {
                     <a className="nav-item nav-link" href="/auth/google">Login</a>
                 ) : (
                     <React.Fragment>
-                        <Link to={"/profile/" + this.props.userInfo._id} className="nav-item nav-link">Profile</Link>
-                        <a className="nav-item nav-link" href="/logout" onClick={this.props.logout}>Logout</a>
+                      <Link to={"/game/"} className="nav-item nav-link">Game</Link>
+                      <Link to={"/profile/" + this.props.userInfo._id} className="nav-item nav-link">Profile</Link>
+                      <a className="nav-item nav-link" href="/logout" onClick={this.props.logout}>Logout</a>
                     </React.Fragment>
                 )}
             </div>

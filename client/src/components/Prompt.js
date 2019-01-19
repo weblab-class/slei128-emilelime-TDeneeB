@@ -34,7 +34,7 @@ class Prompt extends React.Component {
   render() {
     return (
       <div>
-        use js to make questions here
+        use js to map over Prompts array and display the prompt here
       </div>
     )
     ;
