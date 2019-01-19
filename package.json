@@ -12,6 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+<<<<<<< HEAD
+=======
+    "mongoose": "^5.4.5",
+    "passport": "^0.4.0",
+>>>>>>> 2cd7da2ee71655d0ad64cb7df4dcb73744e3c599
     "passport-google-oauth": "^1.0.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
