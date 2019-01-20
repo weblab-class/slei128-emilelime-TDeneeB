@@ -90,4 +90,61 @@ http.listen(3000, () => {
   console.log(`Listening on port 3000 and looking in folder ${publicPath}`);
 });
 
+
+/* *******************************
+   *                             *
+   *       below is socket        *
+   *    stuff for game logic              *
+   ******************************* */
+
+let round = {};
+let gameStarted = false;
+
+
+const getNextGameState = () => {
+  if (!game.game_over) {
+    game = nextStep(game);
+    io.emit("update_game", game);
+  }
+};
+
+// Websocket shenanigans
+let ioRoom = io.of("/" + roomid);
+ioRoom.on('connection', function(socket){
+  let numConnected = 0;
+  console.log('someone connected');
+});
+ioRoom.emit('hi', 'everyone!');
+
+// io.on("newGameCreated", newGameCreated);
+// io.on("beginNewGame", hostPrepareGame);
+
+io.on('connection', (socket) => {
+  numConnected+= 1;
+  console.log("a user connected they are user number " + numConnected);
+  if (!gameStarted) {
+    game = initNewGame();
+    gameInterval = setInterval(
+      () => {
+        getNextGameState();
+      },
+      gameTick,
+    );
+    socket.join('some room');
+    // socket.emit("new_game", game);
+    gameStarted = true;
+  }
+  socket.on("myClick", (data) => {
+    socket.emit('myClick', data) ///???
+  });
+  socket.on("disconnect", () => {
+    console.log("a user disconnected");
+    numConnected -= 1;
+    clearInterval(gameInterval)
+    if (numConnected === 0) {
+      gameStarted = false;
+    }
+  })
+});
+
 //
