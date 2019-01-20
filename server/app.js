@@ -1,9 +1,8 @@
 // express and io
 const express = require("express");
 const path = require("path");
-
-
 const bodyParser = require("body-parser");
+const session = require('express-session');
 
 const app = express();
 const http = require("http").Server(app);
@@ -13,29 +12,35 @@ const passport = require('./passport');
 const io = require("socket.io")(http);
 
 const publicPath = path.resolve(__dirname, "..", "client", "dist");
-const api = require("./api");
+const api = require("./routes/api");
 
 
-//const session = require('express-session');
+
 
 //request parser
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 
-// app.use("./api", api); //this tells app to use Api.js (moved to below until set routes)
+app.use("/api", api); //this tells app to use Api.js (moved to below until set routes)
 // app.use("/auth", auth);
 
 // set up sessions (so that If you log in and refresh the page, you should stay logged in!)
-// app.use(session({
-//   secret: 'session-secret',
-//   resave: 'false',
-//   saveUninitialized: 'true'
-// }));
+app.use(session({
+  secret: 'session-secret',
+  resave: 'false',
+  saveUninitialized: 'true'
+}));
 
 // hook up passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+//user info
+app.get(['/profile/:user'], function (req, res) {
+  res.sendFile(path.join(__dirname, '../socket/dist', 'index.html'));
+});
+
 
 // authentication routes
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
