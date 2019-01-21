@@ -1,6 +1,6 @@
 import React from "react";
 
-class Prompt extends React.Component {
+class Vote extends React.Component {
 
   constructor (props) {
       super(props);
@@ -12,11 +12,12 @@ class Prompt extends React.Component {
   render() {
     return (
       <div>
-        display a prompt from prompts array in game.js here
+        <p>render all the inputs </p>
+        <button>Vote</button>
       </div>
     )
     ;
   }
 }
 
-export default Prompt;
+export default Vote;

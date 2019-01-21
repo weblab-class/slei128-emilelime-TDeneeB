@@ -26,17 +26,12 @@ class Home extends Component {
     return (
       <div className="App-header">
         <h2>{"Welcome to HotTake."}</h2>
-        <h4>{"Students against productivity or other slogan."}</h4>
+        <h4>{"Some funny slogan"}</h4>
         {/* <button type="button" className="btn btn-outline-warning give-padding" onClick={this.goToAuth}>Sign in with Google</button> */}
-        <a href="/auth/google" className ="btn btn-outline-warning give-padding"> Sign up with Google</a> 
-        <Game />
+        <a href="/auth/google" className ="btn btn-outline-warning give-padding"> Sign up with Google</a>
       </div>
     );
   }
 }
 
 export default Home;
-
-
-
-

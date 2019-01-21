@@ -2,11 +2,15 @@
 const express = require('express');
 const connect = require('connect-ensure-login');
 
+const router = express.Router();
+
 // what we need
 const User = require('../models/user');
 const Input = require('../models/input');
+const Room  = require('../models/room');
 
-const router = express.Router();
+const game = require('../game');
+
 
 // get info about user
 router.get('/whoami', function(req, res) {
@@ -24,10 +28,40 @@ router.get('/user', function(req, res) {
   });
 });
 
+// not used
 router.get('/input', function(req, res) {
   Input.find({ input: req.query.text }, function(err, inputs) {
       res.send(inputs);
   })
+});
+
+router.post('/newroom', (req,res) => {
+  const newRoom = new Room({
+    roomid: Math.random().toString(36).substr(2, 5),
+    host: req.user,
+    currentprompt: "",
+    seenprompts: [], //list of ids of seen prompts
+    users: [],
+    gamestate: game.STATE_JOINING
+  });
+
+  newRoom.save(function(err, room) {
+    if (err) {
+      res.send(500, "Something derped putting the thing into the db")
+    } else {
+      res.send({'newRoomId': room.roomid})
+    }
+  });
+});
+
+router.get('/game/:roomid', function(req, res) {
+  Room.findOne({'roomid': req.params.roomid }, function(err, room) {
+    if (err) {
+      res.send(404, "Room not found");
+    } else {
+      res.send(room);
+    }
+  });
 });
 
 // api endpoints
@@ -37,7 +71,7 @@ router.post('/input', (req, res) => { //this
   console.log(req.body.text);
 
   //EDIT THIS CHUNK BELOW, ITS SUPPOSED TO PUSH BACKEND TO INPUT DATABASE BUT ITS BROKEN
-  
+
   const newInput = new Input({
     'userid': req.user._id,
     // 'creator_name': req.user.name,
@@ -45,7 +79,7 @@ router.post('/input', (req, res) => { //this
   });
 
   // connect.ensureLoggedIn();
-  
+
   console.log('new input is created');
 
   newInput.save(function(err, input) {
@@ -61,4 +95,3 @@ router.post('/input', (req, res) => { //this
 });
 
 module.exports = router;
- 

@@ -1,53 +1,74 @@
 import React from "react";
 import Prompt from "./Prompt";
-import Input from "./Input"
+import Input from "./Input";
+import Joining from "./Joining";
+import Prompting from "./Prompting";
+import Vote from "./Vote";
+import Wait from "./Wait";
+import LeaderBoard from "./LeaderBoard";
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    this.socket = io("http://localhost:3000");
-    this.socket.on("new_game", (msg) => {
-      this.updateBoard(msg);
-      document.addEventListener("keydown", this.keyDownBound);
-    });
+    // this.socket = io("http://localhost:3000");
+    // this.socket.on("new_game", (msg) => {
+    //   this.updateBoard(msg);
+    //   document.addEventListener("keydown", this.keyDownBound);
+    // });
 
-    this.socket.on("update_game", (msg) => {
-      this.updateBoard(msg);
-    });
-
+    // this.socket.on("update_game", (msg) => {
+    //   this.updateBoard(msg);
+    // });
+    //
     this.state = {
-      isAllVoted: false,
-      boardContent: this.emptyBoard(roomid),
+      game: null
     };
   }
 
-  //let roomSocket = io(roomid); put somwhere
+  componentDidMount() {
+    this.loadGame(this.props.match.params.roomid);
+  }
 
-  emptyBoard = (roomid) => {
-    const newPrompt = getNewPrompt(roomid);
-    //write func to get prmpt from getNewPrompt();
-    //and pass in prmpt to render on front end
-  };
-
-  updateBoard = (data) => {
-    const newBoard = this.emptyBoard(roomid);
-
-    this.setState({boardContent: newBoard});
-    if (data.game_over) {
-      this.setState({isAllVoted: true});
-    }
-  };
-
-
+  loadGame = (roomid) => {
+    fetch('/api/game/'+roomid)
+    .then(res => res.json())
+    .then( res => {
+      this.setState({game: res});
+    });
+  }
 
   render() {
+    if (this.state.game) {
+      switch (this.state.game.gamestate) {
+        case 0:
+          return (
+            <Joining />
+          );
+        case 1:
+          return (
+            <Prompting />
+          );
+        case 2:
+          return (
+            <Wait />
+          );
+        case 3:
+          return (
+            <Vote />
+          );
+        case 4:
+          return (
+            <Wait/>
+          );
+        case 5:
+          return (
+            <LeaderBoard />
+          );
+      }
+    }
     return (
-      <div>
-        <Prompt />
-        <Input />
-      </div>
-    )
-    ;
+      <div>Loading...</div>
+    );
   }
 }
 
