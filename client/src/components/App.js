@@ -14,7 +14,6 @@ class App extends React.Component {
   constructor (props) {
       super(props);
       this.state = {
-        currentPage: "home",
         userInfo: null
       };
   }
@@ -23,29 +22,29 @@ class App extends React.Component {
       this.getUser();
   }
 
-  createNewGame = ()=> {
-    fetch('/api/newroom', {
-      method: 'POST'
-    })
-    .then((response) => response.json())
-    .then((response) => {
-      this.joinGame(response.newRoomId);
-    })
-  }
-
-  joinGame = (roomId) => {
-    this.props.history.push('/game/'+roomId);
-  }
+  // createNewGame = ()=> {
+  //   fetch('/api/newroom', {
+  //     method: 'POST'
+  //   })
+  //   .then((response) => response.json())
+  //   .then((response) => {
+  //     this.joinGame(response.newRoomId);
+  //   })
+  // }
+  //
+  // joinGame = (roomId) => {
+  //   this.props.history.push('/game/'+roomId);
+  // }
 
   render() {
     return (
       <div className="app">
 
         <NavBar userInfo={this.state.userInfo} logout={this.logout}/>
-        <button onClick={this.createNewGame}>Start a New Game</button>
+
 
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={this.state.userInfo ? Profile : Home} />
           <Route exact path="/profile/:user" component={Profile} />
           <Route exact path="/game/:roomid" component={Game} />
 

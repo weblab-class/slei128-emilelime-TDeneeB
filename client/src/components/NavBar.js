@@ -14,13 +14,16 @@ class NavBar extends Component {
             HotTake
             </div>
             <div className="navbar-nav">
-              <Link to="/" className="nav-item nav-link">Home</Link>
+
                 { this.props.userInfo === null ? (
+                  <React.Fragment>
+                    <Link to="/" className="nav-item nav-link">Home</Link>
                     <a className="nav-item nav-link" href="/auth/google">Login</a>
+                    </React.Fragment>
                 ) : (
                     <React.Fragment>
-                      <Link to={"/game/"} className="nav-item nav-link">Game</Link>
-                      <Link to={"/profile/" + this.props.userInfo._id} className="nav-item nav-link">Profile</Link>
+
+                      <Link to={"/"} className="nav-item nav-link">Profile</Link>
                       <a className="nav-item nav-link" href="/logout" onClick={this.props.logout}>Logout</a>
                     </React.Fragment>
                 )}

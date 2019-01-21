@@ -60,25 +60,7 @@ class Input extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    //write function for what should happen
-    //when user submits a reponse to a prompt
     this.addInput(this.state.value);
-    //the below GAME LOGIC should go in the backend
-    // let totalInputs = this.state.numInputs;
-    // totalInputs +=1;
-    // this.setState({
-    //   numInputs: totalInputs
-    // });
-    // //later: write function here for letting voting session begin
-    // if (totalInputs > 2) { //instead of 2, write here variable that counts num players in game later
-    //   this.setState({
-    //     numInputs: totalInputs
-    //   });
-    // } else {
-    //   //else, do not let users proceed to voting; instead display msg that not everyone has answered yet
-    // }
-
-    //resets state of the textarea to empty string
     this.setState({
       value: ""
     })

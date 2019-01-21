@@ -16,16 +16,9 @@ const io = require("socket.io")(http);
 const publicPath = path.resolve(__dirname, "..", "client", "dist");
 const api = require("./routes/api");
 
-
-
-
 //request parser
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-
-
-app.use("/api", api); //this tells app to use Api.js (moved to below until set routes)
-// app.use("/auth", auth);
 
 // set up sessions (so that If you log in and refresh the page, you should stay logged in!)
 app.use(session({
@@ -37,6 +30,9 @@ app.use(session({
 // hook up passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use("/api", api); //this tells app to use Api.js (moved to below until set routes)
+// app.use("/auth", auth);
 
 //user info
 app.get(['/profile/:user'], function (req, res) {
@@ -146,5 +142,5 @@ http.listen(3000, () => {
 //     }
 //   })
 // });
-// 
+//
 // //

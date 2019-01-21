@@ -9,10 +9,28 @@ class Joining extends React.Component {
       };
   }
 
+  componentDidMount() {
+    fetch('/api/game/'+this.props.game.roomid+'/join', {method: 'POST'})
+    .then(res => res.json())
+    .then(res => (res) => {
+      console.log(res);
+    });
+  }
+
   render() {
     return (
       <div>
-        <p>Make a team name, x is the room code, y and y have joined, host can press start whenver</p>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Create a team Name:
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+
+        <p> the room code is <span className="roomid">{this.props.game.roomid}</span></p>
+        <p>y and y have joined,</p>
+        <p>Click start when all have joined.</p>
         <button>Start Game</button>
       </div>
     )

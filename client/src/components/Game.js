@@ -29,6 +29,7 @@ class Game extends React.Component {
     this.loadGame(this.props.match.params.roomid);
   }
 
+  //fetches something like /api/game/fjw8 from api.js
   loadGame = (roomid) => {
     fetch('/api/game/'+roomid)
     .then(res => res.json())
@@ -37,16 +38,18 @@ class Game extends React.Component {
     });
   }
 
+//renders state of the game if this.state.game is not null and
+//switches which component to render based on the "gamestate" key in Room database
   render() {
     if (this.state.game) {
       switch (this.state.game.gamestate) {
         case 0:
           return (
-            <Joining />
+            <Joining game = {this.state.game}/>
           );
         case 1:
           return (
-            <Prompting />
+            <Prompting game={this.state.game}/>
           );
         case 2:
           return (
