@@ -54,6 +54,7 @@ class Profile extends Component {
         <h4>{"Games 6 | Score 5"}</h4>
         <button type="button" className="btn btn-outline-warning give-padding" onClick={this.createNewGame}>Start a new game 💦</button>
         <button type="button" className="btn btn-outline-warning give-padding" onClick={this.openJoinPrompt}>Join a game 💦</button>
+        <p>Your existing games</p>
         {this.state.joinPrompt ? (
           <React.Fragment>
             <div className="joinprompt">

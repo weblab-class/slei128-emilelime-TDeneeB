@@ -39,7 +39,7 @@ router.get('/input', function(req, res) {
 router.post('/newroom', (req,res) => {
   const newRoom = new Room({
     roomid: Math.random().toString(36).substr(2, 5),
-    host: req.user,
+    host: req.user._id,
     currentprompt: "",
     seenprompts: [], //list of ids of seen prompts
     users: [],
@@ -58,7 +58,10 @@ router.post('/newroom', (req,res) => {
 //finds the room in the db that has the matching roomid
 //sends that room to front end
 router.use('/game/:roomid', function(req, res, next) {
-  Room.findOne({'roomid': req.params.roomid }, function(err, room) {
+  Room.findOne({'roomid': req.params.roomid })
+  .populate('host')
+  .populate('users')
+  .exec(function(err, room) {
     if (err) {
       res.send(404, "Room not found");
     } else {
@@ -71,7 +74,7 @@ router.get('/game/:roomid', function(req, res) {
   res.send(req.room);
 });
 router.post('/game/:roomid/join', (req, res) => {
-  req.room.users.push(req.user);
+  req.room.users.push(req.user._id);
   req.room.save((err, room) => {
     if (err) {
       console.log(err);

@@ -6,10 +6,10 @@ const User = require('./user').schema; //   ./means this directory
 // define a schema
 const RoomModelSchema = new mongoose.Schema({
   roomid: String,
-  host: User,
+  host: {type: mongoose.Schema.Types.ObjectId, ref:"UserModel"},
   currentprompt: String,
   seenprompts: [String], //list of ids of seen prompts
-  users: [User],
+  users: [{type: mongoose.Schema.Types.ObjectId, ref:"UserModel"}],
   gamestate: Number
 
 });

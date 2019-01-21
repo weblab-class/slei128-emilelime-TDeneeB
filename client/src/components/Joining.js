@@ -17,6 +17,10 @@ class Joining extends React.Component {
     });
   }
 
+  renderGame = ()=> {
+    
+  }
+
   render() {
     return (
       <div>
@@ -29,9 +33,9 @@ class Joining extends React.Component {
         </form>
 
         <p> the room code is <span className="roomid">{this.props.game.roomid}</span></p>
-        <p>y and y have joined,</p>
+        <p>x and y {this.props.game.users.toString()} have joined</p>
         <p>Click start when all have joined.</p>
-        <button>Start Game</button>
+        <button onClick={this.renderGame}>Start Game</button>
       </div>
     )
     ;
