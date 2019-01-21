@@ -12,13 +12,13 @@ class Joining extends React.Component {
   componentDidMount() {
     fetch('/api/game/'+this.props.game.roomid+'/join', {method: 'POST'})
     .then(res => res.json())
-    .then(res => (res) => {
+    .then(res => {
       console.log(res);
     });
   }
 
   renderGame = ()=> {
-    
+
   }
 
   render() {
@@ -33,7 +33,7 @@ class Joining extends React.Component {
         </form>
 
         <p> the room code is <span className="roomid">{this.props.game.roomid}</span></p>
-        <p>x and y {this.props.game.users.toString()} have joined</p>
+        <p>{this.props.game.users.map(u => u.name).join(', ')} have joined</p>
         <p>Click start when all have joined.</p>
         <button onClick={this.renderGame}>Start Game</button>
       </div>

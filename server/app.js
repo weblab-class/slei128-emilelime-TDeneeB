@@ -82,10 +82,20 @@ app.use(function(err, req, res, next) {
 });
 
 
+
 http.listen(3000, () => {
   console.log(`Listening on port 3000 and looking in folder ${publicPath}`);
 });
 
+
+//socket stuff
+app.set('socketio',io);
+io.on('connection', (socket)=> {
+  // console.log('Query:', socket.handshake.query);
+  let roomid = socket.handshake.query.room;
+  socket.join(roomid);
+  console.log('socket join room id ' + roomid);
+});
 
 /* *******************************
    *                             *

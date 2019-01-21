@@ -80,7 +80,12 @@ router.post('/game/:roomid/join', (req, res) => {
       console.log(err);
       res.send(500, "something derped joining the room");
     } else {
-      res.send(room);
+      room.populate('users', (err, room) => {
+        res.send({}); //sends the fact that Jamie joined to jamie
+        const io = req.app.get('socketio');
+        //params is the stuff after : in the url
+        io.in(req.params.roomid).emit('roomStateChange', room); //updates all users in room that Jamie joined
+      });
     }
   });
 })
