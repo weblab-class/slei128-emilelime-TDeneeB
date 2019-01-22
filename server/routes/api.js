@@ -110,9 +110,6 @@ router.post('/game/:roomid/startgame', (req,res)=> {
 })
 
 router.post('/game/:roomid/input', (req, res) => { //this
-  // res.send('hi');
-  console.log("router.post is running");
-  console.log();
   let userInput = req.body.text;
   req.room.inputs.set(req.user._id, userInput);
 
@@ -120,7 +117,6 @@ router.post('/game/:roomid/input', (req, res) => { //this
   // advance to the next gamestate
   allUsersSubmittedInput = true;
   req.room.users.forEach( (user) => {
-    console.log(req.room.inputs, user.id, typeof user.id, req.room.inputs.get(user.id));
     if (!(req.room.inputs.has(user.id) || user._id==req.user.id)) {
       allUsersSubmittedInput = false;
     }
@@ -134,6 +130,47 @@ router.post('/game/:roomid/input', (req, res) => { //this
     sendRoomStateChange(req, room);
   });
 });
+
+router.post('/game/:roomid/vote', (req, res) => { //this
+  let voteFor = req.body.voteFor;
+  req.room.votesFor.set(req.user._id, voteFor);
+
+  // if this was the last user's input,
+  // advance to the next gamestate
+  allUsersSubmittedVote = true;
+  req.room.users.forEach( (user) => {
+    if (!(req.room.votesFor.has(user.id) || user._id==req.user.id)) {
+      allUsersSubmittedVote = false;
+    }
+  })
+  if (allUsersSubmittedVote) {
+    req.room.gamestate = game.STATE_LEADERBOARD;
+  }
+
+  req.room.save(function(err, room) {
+    res.send({});
+    sendRoomStateChange(req, room);
+  });
+});
+
+router.post('/game/:roomid/nextround', (req, res) => { //this
+  req.room.inputs = undefined;
+  req.room.votesFor = undefined;
+  req.room.score = undefined;
+  req.room.save(function(err, room) {
+    req.room.inputs = {};
+    req.room.votesFor = {};
+    req.room.score = {};
+    req.room.currentprompt = "Say something else funny!!!";
+    req.room.gamestate = game.STATE_PROMPTING;
+
+    req.room.save(function(err, room) {
+      res.send({});
+      sendRoomStateChange(req, room);
+    });
+  })
+});
+
 
 router.post('/input', (req, res) => { //this
   // res.send('hi');

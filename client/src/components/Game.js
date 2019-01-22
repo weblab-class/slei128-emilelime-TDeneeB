@@ -51,6 +51,10 @@ class Game extends React.Component {
     });
   }
 
+  getUser = (userid) => {
+    return this.state.game.users.filter( (user) => (user._id == userid) )[0];
+  }
+
 //renders state of the game if this.state.game is not null and
 //switches which component to render based on the "gamestate" key in Room database
   render() {
@@ -73,7 +77,7 @@ class Game extends React.Component {
           );
         case 3:
           return (
-            <Vote />
+            <Vote game={this.state.game}/>
           );
         case 4:
           return (
@@ -81,7 +85,10 @@ class Game extends React.Component {
           );
         case 5:
           return (
-            <LeaderBoard />
+            <LeaderBoard
+              game={this.state.game}
+              getUser={this.getUser}
+            />
           );
       }
     }
