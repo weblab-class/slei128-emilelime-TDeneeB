@@ -36,7 +36,7 @@ class Game extends React.Component {
     //when backend emits a room state change, the frontend, ON CATCHING THAT,
     //changes the state
     this.socket.on('roomStateChange', (newGameStateData) => {
-      console.log('received room state change', newGameStateData);
+      // console.log('received room state change', newGameStateData);
       this.setState({game: newGameStateData});
     });
 
@@ -48,6 +48,7 @@ class Game extends React.Component {
     .then(res => res.json())
     .then( res => {
       this.setState({game: res});
+      // console.log(this.state.game);
     });
   }
 

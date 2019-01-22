@@ -13,7 +13,7 @@ class Joining extends React.Component {
     fetch('/api/game/'+this.props.game.roomid+'/join', {method: 'POST'})
     .then(res => res.json())
     .then(res => {
-      console.log(res);
+      // console.log(res);
     });
   }
 
@@ -22,7 +22,9 @@ class Joining extends React.Component {
     //.then(...) TODO: check if it worked
   }
 
+
   render() {
+    console.log(this.props.game.users);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

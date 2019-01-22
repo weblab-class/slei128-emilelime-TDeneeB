@@ -74,6 +74,7 @@ class App extends React.Component {
                 this.setState({
                     userInfo: userObj
                 });
+                console.log(this.state.userInfo);
             } else {
                 this.setState({
                     userInfo: null
