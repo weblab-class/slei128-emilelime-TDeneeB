@@ -9,8 +9,8 @@ const User = require('./models/user');
 
 // set up passport configs
 passport.use(new GoogleStrategy({
-  clientID: '206652935257-o7644qrnjso40gjujf83a6tien1nl64i.apps.googleusercontent.com', // added our own
-  clientSecret: '59KtB3S7gWvulOropozIvpFT', // added our own
+  clientID: process.env.GOOGLE_CLIENT_ID, // added our own
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET, // added our own
   callbackURL: '/auth/google/callback'
 }, function(accessToken, refreshToken, profile, done) {
 //Look up the user by the “googleid” supplied by Google.

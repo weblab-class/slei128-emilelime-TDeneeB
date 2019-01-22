@@ -8,6 +8,7 @@ import Game from "./Game";
 import Profile from "./Profile";
 import NavBar from "./NavBar";
 import Home from "./Home";
+const API_ENDPOINT_START = 'https://hottake.herokuapp.com/';
 
 class App extends React.Component {
 

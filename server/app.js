@@ -1,6 +1,8 @@
 // express and io
 const express = require("express");
 const path = require("path");
+require(‘dotenv’).config();
+
 const bodyParser = require("body-parser");
 const session = require('express-session');
 
@@ -82,7 +84,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-
+const port = (process.env.PORT||3000);
 http.listen(3000, () => {
   console.log(`Listening on port 3000 and looking in folder ${publicPath}`);
 });
