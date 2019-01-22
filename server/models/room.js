@@ -7,9 +7,13 @@ const User = require('./user').schema; //   ./means this directory
 const RoomModelSchema = new mongoose.Schema({
   roomid: String,
   host: {type: mongoose.Schema.Types.ObjectId, ref:"UserModel"},
+  teamname:String,
   currentprompt: String,
   seenprompts: [String], //list of ids of seen prompts
   users: [{type: mongoose.Schema.Types.ObjectId, ref:"UserModel"}],
+  inputs: {type: Map, of: String},
+  votesFor: {type: Map, of: String},
+  score: {type: Map, of: String},
   gamestate: Number
 
 });

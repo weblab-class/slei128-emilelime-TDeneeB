@@ -17,8 +17,9 @@ class Joining extends React.Component {
     });
   }
 
-  renderGame = ()=> {
-
+  startGame = ()=> {
+    fetch('/api/game/'+this.props.game.roomid+'/startgame', {method: 'POST'})
+    //.then(...) TODO: check if it worked
   }
 
   render() {
@@ -34,11 +35,19 @@ class Joining extends React.Component {
 
         <p> the room code is <span className="roomid">{this.props.game.roomid}</span></p>
         <p>{this.props.game.users.map(u => u.name).join(', ')} have joined</p>
-        <p>Click start when all have joined.</p>
-        <button onClick={this.renderGame}>Start Game</button>
+
+        {(this.props.isHost ? (
+          <div>
+            <p>Click start when all have joined.</p>
+            <button onClick={this.startGame}>Start Game</button>
+          </div>
+        ) : (
+          <div>
+            <p>waiting on host to start game</p>
+          </div>
+        ))}
       </div>
-    )
-    ;
+    );
   }
 }
 

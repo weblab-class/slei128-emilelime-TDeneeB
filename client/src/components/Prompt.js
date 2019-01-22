@@ -12,7 +12,7 @@ class Prompt extends React.Component {
   render() {
     return (
       <div>
-        display a prompt from prompts array in game.js here
+        Prompt: {this.props.promptText}
       </div>
     )
     ;

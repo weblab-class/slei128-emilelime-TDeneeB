@@ -46,8 +46,11 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={this.state.userInfo ? Profile : Home} />
           <Route exact path="/profile/:user" component={Profile} />
-          <Route exact path="/game/:roomid" component={Game} />
-
+          <Route exact path="/game/:roomid"
+            render={(props) => <Game {...props}
+              userInfo={this.state.userInfo}
+            />}
+          />
         </Switch>
 
       </div>

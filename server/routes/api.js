@@ -40,9 +40,13 @@ router.post('/newroom', (req,res) => {
   const newRoom = new Room({
     roomid: Math.random().toString(36).substr(2, 5),
     host: req.user._id,
+    teamname: "WeridFlex",
     currentprompt: "",
     seenprompts: [], //list of ids of seen prompts
     users: [],
+    inputs: {},
+    votesFor: {},
+    score: {},
     gamestate: game.STATE_JOINING
   });
 
@@ -73,6 +77,15 @@ router.use('/game/:roomid', function(req, res, next) {
 router.get('/game/:roomid', function(req, res) {
   res.send(req.room);
 });
+
+function sendRoomStateChange(req, room) {
+  room.populate('users', (err, room) => {
+    const io = req.app.get('socketio');
+    //params is the stuff after : in the url
+    io.in(req.params.roomid).emit('roomStateChange', room); //updates all users in room that Jamie joined
+  });
+}
+
 router.post('/game/:roomid/join', (req, res) => {
   req.room.users.push(req.user._id);
   req.room.save((err, room) => {
@@ -80,23 +93,52 @@ router.post('/game/:roomid/join', (req, res) => {
       console.log(err);
       res.send(500, "something derped joining the room");
     } else {
-      room.populate('users', (err, room) => {
-        res.send({}); //sends the fact that Jamie joined to jamie
-        const io = req.app.get('socketio');
-        //params is the stuff after : in the url
-        io.in(req.params.roomid).emit('roomStateChange', room); //updates all users in room that Jamie joined
-      });
+      res.send({}); //sends the fact that Jamie joined to jamie
+      sendRoomStateChange(req, room)
     }
+  });
+});
+
+//tell server we're changing gamestate to PROMPTING, when HOST clicks "startgame"
+router.post('/game/:roomid/startgame', (req,res)=> {
+  req.room.gamestate = game.STATE_PROMPTING;
+  req.room.currentprompt = "Say something funny!"; //TODO
+  req.room.save((err,room)=> {
+    res.send({});
+    sendRoomStateChange(req, room);
   });
 })
 
-// api endpoints
+router.post('/game/:roomid/input', (req, res) => { //this
+  // res.send('hi');
+  console.log("router.post is running");
+  console.log();
+  let userInput = req.body.text;
+  req.room.inputs.set(req.user._id, userInput);
+
+  // if this was the last user's input,
+  // advance to the next gamestate
+  allUsersSubmittedInput = true;
+  req.room.users.forEach( (user) => {
+    console.log(req.room.inputs, user.id, typeof user.id, req.room.inputs.get(user.id));
+    if (!(req.room.inputs.has(user.id) || user._id==req.user.id)) {
+      allUsersSubmittedInput = false;
+    }
+  })
+  if (allUsersSubmittedInput) {
+    req.room.gamestate = game.STATE_VOTE;
+  }
+
+  req.room.save(function(err, room) {
+    res.send({});
+    sendRoomStateChange(req, room);
+  });
+});
+
 router.post('/input', (req, res) => { //this
   // res.send('hi');
   console.log("router.post is running");
   console.log(req.body.text);
-
-  //EDIT THIS CHUNK BELOW, ITS SUPPOSED TO PUSH BACKEND TO INPUT DATABASE BUT ITS BROKEN
 
   const newInput = new Input({
     'userid': req.user._id,
@@ -116,8 +158,6 @@ router.post('/input', (req, res) => { //this
     if (err) console.log(err);
   });
   res.send({});
-
-
 });
 
 module.exports = router;
