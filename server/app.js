@@ -1,7 +1,7 @@
 // express and io
 const express = require("express");
 const path = require("path");
-const dotenv = require(‘dotenv’).config();
+const dotenv = require(‘dotenv’).config({path: '../.env'});
 
 const bodyParser = require("body-parser");
 const session = require('express-session');
