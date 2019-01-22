@@ -34,6 +34,8 @@ class Joining extends React.Component {
         </form>
 
         <p> the room code is <span className="roomid">{this.props.game.roomid}</span></p>
+
+
         <p>{this.props.game.users.map(u => u.name).join(', ')} have joined</p>
 
         {(this.props.isHost ? (
