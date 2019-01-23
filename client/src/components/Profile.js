@@ -1,12 +1,20 @@
 import React, {Component} from 'react';
+
+
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       joinPrompt: false,
       joinRoomValue: ""
-
     };
+  }
+
+  componentDidMount () {
+    //Why is Profile.js not getting the userInfo prop passed down from App.js?
+    // console.log(this.props.userInfo.name);
+    // console.log(this.props.userInfo.totalscore);
+    // console.log(this.props.userInfo.currentgames.length);
   }
 
   createNewGame = ()=> {
@@ -32,29 +40,19 @@ class Profile extends Component {
   joinPromptChange = (event) => {
     this.setState({'joinRoomValue': event.target.value});
   }
-
-
-
-
   joinGame = (roomId) => {
     this.props.history.push('/game/'+roomId);
   }
 
-
-
-  //write front end functions to render:
-  ////// 1. user's name at "Jamie"
-  ////// 2. user's numGames at "Games 6"
-  ////// 3. user's totalScore at "Score 5"
-
   render () {
     return (
       <div className="App-header">
-        <h2>{"Welcome, Jamie."}</h2>
-        <h4>{"Games 6 | Score 5"}</h4>
+        <h2>Welcome JAMIE</h2>
+        <h4>Games SIX | Score FIVE</h4>
         <button type="button" className="btn btn-outline-warning give-padding" onClick={this.createNewGame}>Start a new game 💦</button>
         <button type="button" className="btn btn-outline-warning give-padding" onClick={this.openJoinPrompt}>Join a game 💦</button>
-        <p>Your existing games</p>
+        <h1>YOUR CURRENT GAMES</h1>
+        <p>Pick up where you left off.</p>
         {this.state.joinPrompt ? (
           <React.Fragment>
             <div className="joinprompt">

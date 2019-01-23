@@ -135,7 +135,7 @@ router.post('/game/:roomid/vote', (req, res) => { //this
   let voteFor = req.body.voteFor;
   req.room.votesFor.set(req.user._id, voteFor);
 
-  // if this was the last user's input,
+  // if this was the last user's vote,
   // advance to the next gamestate
   allUsersSubmittedVote = true;
   req.room.users.forEach( (user) => {

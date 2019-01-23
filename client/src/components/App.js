@@ -37,7 +37,9 @@ class App extends React.Component {
   //   this.props.history.push('/game/'+roomId);
   // }
 
+          // <Route exact path="/profile/:user" component={Profile} />
   render() {
+
     return (
       <div className="app">
 
@@ -46,7 +48,11 @@ class App extends React.Component {
 
         <Switch>
           <Route exact path="/" component={this.state.userInfo ? Profile : Home} />
-          <Route exact path="/profile/:user" component={Profile} />
+          <Route exact path="/profile/:user"
+            render={(props) => <Profile {...props}
+              userInfo={this.state.userInfo}
+            />}
+          />
           <Route exact path="/game/:roomid"
             render={(props) => <Game {...props}
               userInfo={this.state.userInfo}

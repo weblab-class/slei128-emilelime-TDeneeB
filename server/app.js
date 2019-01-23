@@ -18,11 +18,9 @@ const io = require("socket.io")(http);
 const publicPath = path.resolve(__dirname, "..", "client", "dist");
 const api = require("./routes/api");
 
-//request parser
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-// set up sessions (so that If you log in and refresh the page, you should stay logged in!)
 app.use(session({
   secret: 'session-secret',
   resave: 'false',
@@ -34,13 +32,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/api", api); //this tells app to use Api.js (moved to below until set routes)
-// app.use("/auth", auth);
 
 //user info
 app.get(['/profile/:user'], function (req, res) {
   res.sendFile(path.join(__dirname, '../socket/dist', 'index.html'));
 });
-
 
 // authentication routes
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
@@ -56,8 +52,6 @@ app.get(
   }
 );
 
-// set routes
-//app.use('/', views);
 app.use('/api', api );
 app.use(express.static(publicPath));
 
@@ -83,12 +77,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
 // const port = (process.env.PORT||3000);
 http.listen((process.env.PORT||3000), () => {
   console.log(`Listening on port 3000 and looking in folder ${publicPath}`);
 });
-
 
 //socket stuff
 app.set('socketio',io);
@@ -98,61 +90,3 @@ io.on('connection', (socket)=> {
   socket.join(roomid);
   console.log('socket join room id ' + roomid);
 });
-
-/* *******************************
-   *                             *
-   *       below is socket        *
-   *    stuff for game logic              *
-   ******************************* */
-//
-// let round = {};
-// let gameStarted = false;
-//
-//
-// const getNextGameState = () => {
-//   if (!game.game_over) {
-//     game = nextStep(game);
-//     io.emit("update_game", game);
-//   }
-// };
-//
-// // Websocket shenanigans
-// let ioRoom = io.of("/" + roomid);
-// ioRoom.on('connection', function(socket){
-//   let numConnected = 0;
-//   console.log('someone connected');
-// });
-// ioRoom.emit('hi', 'everyone!');
-//
-// // io.on("newGameCreated", newGameCreated);
-// // io.on("beginNewGame", hostPrepareGame);
-//
-// io.on('connection', (socket) => {
-//   numConnected+= 1;
-//   console.log("a user connected they are user number " + numConnected);
-//   if (!gameStarted) {
-//     game = initNewGame();
-//     gameInterval = setInterval(
-//       () => {
-//         getNextGameState();
-//       },
-//       gameTick,
-//     );
-//     socket.join('some room');
-//     // socket.emit("new_game", game);
-//     gameStarted = true;
-//   }
-//   socket.on("myClick", (data) => {
-//     socket.emit('myClick', data) ///???
-//   });
-//   socket.on("disconnect", () => {
-//     console.log("a user disconnected");
-//     numConnected -= 1;
-//     clearInterval(gameInterval)
-//     if (numConnected === 0) {
-//       gameStarted = false;
-//     }
-//   })
-// });
-//
-// //

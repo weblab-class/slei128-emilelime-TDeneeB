@@ -8,20 +8,6 @@ class Home extends Component {
     };
   }
 
-  // redirect to login for google authentication
-  goToAuth = (user) => {
-    return user.redirect('/auth/');
-  }
-
-  //to get information on user
-  // onSignIn = (googleUser) => {
-  //   var profile = googleUser.getBasicProfile();
-  //   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  //   console.log('Name: ' + profile.getName());
-  //   console.log('Image URL: ' + profile.getImageUrl());
-  //   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  // }
-
   render () {
     return (
       <div className="App-header">

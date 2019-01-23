@@ -28,6 +28,7 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.userInfo.name);
     this.roomid = this.props.match.params.roomid;
     this.loadGame();
     //the line below connects to "socket stuff" in app.js
