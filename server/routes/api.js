@@ -94,18 +94,26 @@ function sendRoomStateChange(req, room) {
 }
 
 router.post('/game/:roomid/join', (req, res) => {
-  if (req.user.currentrooms.includes(req.room._id)) {
-    // user is already in this room!
-    res.status(200).send('Already in room');
-  } else {
-    // add this room to the user's currentrooms
-    // req.user doesn't have .save() anymore so we gotta find it again
-    User.findById(req.user._id, (err, user) => {
-      user.currentrooms.push(req.room._id);
+  // add this room to the user's currentrooms
+  // req.user doesn't have .save() anymore so we gotta find it again
+  User.findById(req.user._id, (err, user) => {
+    // on req.room, ._id is an ObjectID, and .id is a STRING
+    console.log(user.currentrooms, req.room.id, typeof req.room.id);
+    if (user.currentrooms.indexOf(req.room.id)>=0) {
+      console.log('This user already has this room in currentrooms!');
+    } else {
+      // user is already in this room!
+      user.currentrooms.push(req.room.id);
       user.save();
-    });
+    }
+  });
 
-    // add this user to the room
+  // add this user to the room
+  userids_in_room  = req.room.users.map(u => u.id);
+  console.log(userids_in_room, req.user._id, typeof req.user._id); // on req.user, _id is a STRING
+  if (userids_in_room.indexOf(req.user._id)>=0) {
+    console.log('This room already has this user in it!');
+  } else {
     req.room.users.push(req.user._id);
     req.room.save((err, room) => {
         res.send({}); //sends the fact that Jamie joined to jamie
