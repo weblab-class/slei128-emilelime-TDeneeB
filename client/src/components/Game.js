@@ -49,7 +49,7 @@ class Game extends React.Component {
     .then(res => res.json())
     .then( res => {
       this.setState({game: res});
-      // console.log(this.state.game);
+      console.log(this.state.game);
     });
   }
 
