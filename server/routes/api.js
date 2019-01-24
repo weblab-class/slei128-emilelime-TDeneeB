@@ -15,7 +15,14 @@ const game = require('../game');
 // get info about user
 router.get('/whoami', function(req, res) {
   if(req.isAuthenticated()) {
-      res.send(req.user);
+    // it seems like req.user gets doesn't update
+    User.findById(req.user._id)
+    // .populate() replaces a list of ObjectID's with a list of those actual objects
+    .populate('currentrooms') //populate serves to populate currentrooms
+    //field in user model, which is a list of objectIDs; it does so by going into the reference RoomModel
+    .exec((err, user) => {
+      res.send(user);
+    });
   }
   else {
       res.send({});
@@ -87,16 +94,25 @@ function sendRoomStateChange(req, room) {
 }
 
 router.post('/game/:roomid/join', (req, res) => {
-  req.room.users.push(req.user._id);
-  req.room.save((err, room) => {
-    if (err) {
-      console.log(err);
-      res.send(500, "something derped joining the room");
-    } else {
-      res.send({}); //sends the fact that Jamie joined to jamie
-      sendRoomStateChange(req, room)
-    }
-  });
+  if (req.user.currentrooms.includes(req.room._id)) {
+    // user is already in this room!
+    res.status(200).send('Already in room');
+  } else {
+    // add this room to the user's currentrooms
+    // req.user doesn't have .save() anymore so we gotta find it again
+    User.findById(req.user._id, (err, user) => {
+      user.currentrooms.push(req.room._id);
+      user.save();
+    });
+
+    // add this user to the room
+    req.room.users.push(req.user._id);
+    req.room.save((err, room) => {
+        res.send({}); //sends the fact that Jamie joined to jamie
+        sendRoomStateChange(req, room);
+    });
+  }
+  // also add this room to the users active rooms
 });
 
 //tell server we're changing gamestate to PROMPTING, when HOST clicks "startgame"

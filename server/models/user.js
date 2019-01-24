@@ -7,7 +7,7 @@ const UserModelSchema = new mongoose.Schema({
   name: String,
   photo: String,
   totalscore: Number,
-  currentrooms: [String]
+  currentrooms: [{type: mongoose.Schema.Types.ObjectId, ref:"RoomModel"}]
 });
 
 // compile model from schema

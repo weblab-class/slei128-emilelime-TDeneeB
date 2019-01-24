@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import CurrentGameCard from "./CurrentGameCard";
 
 class Profile extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class Profile extends Component {
     // console.log(this.props.userInfo.name);
     // console.log(this.props.userInfo.totalscore);
     // console.log(this.props.userInfo.currentgames.length);
+    this.props.refreshUser();
   }
 
   createNewGame = ()=> {
@@ -50,8 +51,8 @@ class Profile extends Component {
         <div className="profile-header">
           <div className="row">
             <div className="col-8">
-              <h2>Welcome JAMIE</h2>
-              <h4>Games SIX | Score FIVE</h4>
+              <h2>Welcome {this.props.userInfo.name}</h2>
+              <h4>Games {this.props.userInfo.currentrooms.length} | Score {this.props.userInfo.totalscore}</h4>
             </div>
 
             <div className="col-4">
@@ -78,7 +79,9 @@ class Profile extends Component {
 
         <div className="profile-body">
           <h1>YOUR CURRENT GAMES</h1>
-          <p>TODO Render current games here.</p>
+          {this.props.userInfo.currentrooms.map( room => (
+            <CurrentGameCard room={room}/>
+          )) }
         </div>
 
       </div>
