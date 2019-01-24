@@ -45,7 +45,10 @@ module.exports = {
     proxy: {
       '/api': 'http://localhost:3000',
       '/auth': 'http://localhost:3000',
-      '/logout': 'http://localhost:3000'
+      '/logout': 'http://localhost:3000',
+      '/socket.io': {
+        target: 'http://localhost:3000', ws: true
+      }
     }
   }
 };
