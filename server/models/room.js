@@ -13,7 +13,7 @@ const RoomModelSchema = new mongoose.Schema({
   users: [{type: mongoose.Schema.Types.ObjectId, ref:"UserModel"}],
   inputs: {type: Map, of: String},
   votesFor: {type: Map, of: String},
-  score: {type: Map, of: String},
+  score: {type: Map, of: Number},
   gamestate: Number
 });
 

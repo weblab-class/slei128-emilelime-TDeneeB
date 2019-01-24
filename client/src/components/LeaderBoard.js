@@ -22,19 +22,20 @@ class LeaderBoard extends React.Component {
         userid: userid,
         author: this.props.getUser(userid),
         text: this.props.game.inputs[userid],
-        totalVotes: 0,
+        votesThisRound: 0,
+        totalVotes: this.props.game.score[userid],
         usersThatVoted: []
       }
     });
 
     Object.keys(this.props.game.votesFor).forEach((userid) => {
       let voteFor = this.props.game.votesFor[userid];
-      cards[voteFor].totalVotes += 1;
+      cards[voteFor].votesThisRound += 1;
       cards[voteFor].usersThatVoted.push(this.props.getUser(userid));
     })
 
     cards = Object.values(cards);
-    cards.sort( (c1, c2) => (c2.totalVotes - c1.totalVotes) );
+    cards.sort( (c1, c2) => (c2.votesThisRound - c1.votesThisRound) );
 
     return (
       <div>
@@ -43,6 +44,7 @@ class LeaderBoard extends React.Component {
             author={card.author}
             key={`Card_${card.userid}`}
             text={card.text}
+            votesThisRound={card.votesThisRound}
             totalVotes={card.totalVotes}
             usersThatVoted = {card.usersThatVoted}
           />

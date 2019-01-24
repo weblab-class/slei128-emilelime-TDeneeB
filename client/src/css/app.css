@@ -54,19 +54,30 @@ text {
   display: block;
 }
 
-.teamnameform {
-  padding-top: 20px;
+form.inlineForm {
+  display: inline;
 }
-
-.teamname {
+form.inlineForm input {
+  background: none;
+  border: none;
+  border-bottom: 2px solid #C0C0C0;
   color: white;
-  font-size: 20px;
-  display: block;
+  margin-left: .1em;
+  outline: none !important;
+}
+form.inlineForm input:focus {
+  border-bottom: 2px solid white;
+}
+form.inlineForm button {
+  border-radius: 30px;
 }
 
-.teamnameinput {
-  display: block;
+h3.teamname {
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0 0 40px 0;
 }
+
 .button-padding {
   margin: 3px;
 }
@@ -88,6 +99,10 @@ text {
 
 .signupbutton {
   padding-left: 20px;
+}
+
+.usericon {
+  border-radius: 25px;
 }
 
 h1 { color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; }

@@ -18,8 +18,8 @@ class Card extends React.Component {
           {this.props.author.name}
         </div>
         <div className="quote">{this.props.text}</div>
+        <div className="numVotesThisRound">+{this.props.votesThisRound}🔥</div>
         <div className="votesfor">
-          Votes:
           {(this.props.usersThatVoted ? (
             this.props.usersThatVoted.map(user => (
               <div key={`VoteBy_${user.userid}`}>
@@ -31,7 +31,7 @@ class Card extends React.Component {
             <div>No votes for you bby</div>
           ))}
         </div>
-        <div className="totalVotes">{this.props.totalVotes} total!</div>
+        <div className="totalVotes">🔥{this.props.totalVotes}</div>
       </div>
     );
   }

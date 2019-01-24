@@ -47,7 +47,7 @@ router.post('/newroom', (req,res) => {
   const newRoom = new Room({
     roomid: Math.random().toString(36).substr(2, 5),
     host: req.user._id,
-    teamname: "WeridFlex",
+    teamname: "",
     currentprompt: "",
     seenprompts: [], //list of ids of seen prompts
     users: [],
@@ -115,6 +115,7 @@ router.post('/game/:roomid/join', (req, res) => {
     console.log('This room already has this user in it!');
   } else {
     req.room.users.push(req.user._id);
+    req.room.score.set(req.user._id, 0);
     req.room.save((err, room) => {
         res.send({}); //sends the fact that Jamie joined to jamie
         sendRoomStateChange(req, room);
@@ -130,6 +131,16 @@ router.post('/game/:roomid/startgame', (req,res)=> {
   req.room.save((err,room)=> {
     res.send({});
     sendRoomStateChange(req, room);
+  });
+})
+
+router.post('/game/:roomid/maketeamname', (req,res)=> {
+  let teamName = req.body.teamname;
+  req.room.teamname = teamName;
+  req.room.save((err,room)=> {
+    res.send({});
+    sendRoomStateChange(req, room);
+
   });
 })
 
@@ -155,6 +166,11 @@ router.post('/game/:roomid/input', (req, res) => { //this
   });
 });
 
+//methods for Map:
+//Map object holds key-value pairs and remembers the original insertion order of the keys.
+//.get(key)--->value
+//.set(key,value)
+//.has(key)--> T/F
 router.post('/game/:roomid/vote', (req, res) => { //this
   let voteFor = req.body.voteFor;
   req.room.votesFor.set(req.user._id, voteFor);
@@ -168,23 +184,31 @@ router.post('/game/:roomid/vote', (req, res) => { //this
     }
   })
   if (allUsersSubmittedVote) {
+    req.room.users.forEach( (user) => {
+      let voteForUserId = req.room.votesFor.get(user.id);
+      let currentNumVotes = req.room.score.get(voteForUserId);
+      req.room.score.set(voteForUserId, currentNumVotes+1);
+    });
     req.room.gamestate = game.STATE_LEADERBOARD;
   }
 
   req.room.save(function(err, room) {
-    res.send({});
-    sendRoomStateChange(req, room);
+    if (err) {
+      console.log('Error saving room', err)
+      res.status(500).send(err);
+    } else {
+      res.send({});
+      sendRoomStateChange(req, room);
+    }
   });
 });
 
 router.post('/game/:roomid/nextround', (req, res) => { //this
   req.room.inputs = undefined;
   req.room.votesFor = undefined;
-  req.room.score = undefined;
   req.room.save(function(err, room) {
     req.room.inputs = {};
     req.room.votesFor = {};
-    req.room.score = {};
     req.room.currentprompt = game.prompts[Math.floor(Math.random()*game.prompts.length)].text;
     req.room.gamestate = game.STATE_PROMPTING;
 
