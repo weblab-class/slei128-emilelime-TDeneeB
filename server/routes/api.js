@@ -189,6 +189,13 @@ router.post('/game/:roomid/vote', (req, res) => { //this
       let currentNumVotes = req.room.score.get(voteForUserId);
       req.room.score.set(voteForUserId, currentNumVotes+1);
     });
+    req.room.users.forEach((user)=> {
+      let newlyEarnedScore = req.room.score.get(user.id);
+      user.totalscore += newlyEarnedScore;
+      user.save((err, user) => {
+        if (err) console.log('error saving user', err);
+      });
+    })
     req.room.gamestate = game.STATE_LEADERBOARD;
   }
 

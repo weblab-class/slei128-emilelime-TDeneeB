@@ -23,7 +23,8 @@ passport.use(new GoogleStrategy({
       const user = new User({
         name: profile.displayName,
         googleid: profile.id,
-        photo: profile.photos[0].value
+        photo: profile.photos[0].value,
+        totalscore: 0
       });
 
       user.save(function(err) {

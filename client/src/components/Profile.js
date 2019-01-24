@@ -52,7 +52,7 @@ class Profile extends Component {
           <div className="row">
             <div className="col-8">
               <h2>Welcome {this.props.userInfo.name}</h2>
-              <h4>Games {this.props.userInfo.currentrooms.length} | Score {this.props.userInfo.totalscore}</h4>
+              <h4>Games 🎯{this.props.userInfo.currentrooms.length} | Score 🔥{this.props.userInfo.totalscore}</h4>
             </div>
 
             <div className="col-4">
