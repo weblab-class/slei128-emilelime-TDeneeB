@@ -99,10 +99,11 @@ router.post('/game/:roomid/join', (req, res) => {
   });
 });
 
+// [Math.floor(Math.random()*prompts.length)]
 //tell server we're changing gamestate to PROMPTING, when HOST clicks "startgame"
 router.post('/game/:roomid/startgame', (req,res)=> {
   req.room.gamestate = game.STATE_PROMPTING;
-  req.room.currentprompt = "Say something funny!"; //TODO
+  req.room.currentprompt = game.prompts[Math.floor(Math.random()*game.prompts.length)].text;
   req.room.save((err,room)=> {
     res.send({});
     sendRoomStateChange(req, room);
@@ -161,7 +162,7 @@ router.post('/game/:roomid/nextround', (req, res) => { //this
     req.room.inputs = {};
     req.room.votesFor = {};
     req.room.score = {};
-    req.room.currentprompt = "Say something else funny!!!";
+    req.room.currentprompt = game.prompts[Math.floor(Math.random()*game.prompts.length)].text;
     req.room.gamestate = game.STATE_PROMPTING;
 
     req.room.save(function(err, room) {

@@ -47,26 +47,40 @@ class Profile extends Component {
   render () {
     return (
       <div className="App-header">
-        <h2>Welcome JAMIE</h2>
-        <h4>Games SIX | Score FIVE</h4>
-        <button type="button" className="btn btn-outline-warning give-padding" onClick={this.createNewGame}>Start a new game 💦</button>
-        <button type="button" className="btn btn-outline-warning give-padding" onClick={this.openJoinPrompt}>Join a game 💦</button>
-        <h1>YOUR CURRENT GAMES</h1>
-        <p>Pick up where you left off.</p>
-        {this.state.joinPrompt ? (
-          <React.Fragment>
-            <div className="joinprompt">
-              <form onSubmit={this.joinPromptSubmit}>
-                <label>
-                  Enter room code:
-                  <input type="text" value={this.state.value} onChange={this.joinPromptChange} />
-                </label>
-                <input type="submit" value="Submit" />
-              </form>
-              <div className="close" onClick={this.closeJoinPrompt}>X</div>
+        <div className="profile-header">
+          <div className="row">
+            <div className="col-8">
+              <h2>Welcome JAMIE</h2>
+              <h4>Games SIX | Score FIVE</h4>
             </div>
-          </React.Fragment>
-        ) : null}
+
+            <div className="col-4">
+              <button type="button" className="btn btn-light button-padding" onClick={this.createNewGame}>Start a new game 💦</button>
+              <button type="button" className="btn btn-light button-padding" onClick={this.openJoinPrompt}>Join a game 💦</button>
+              {this.state.joinPrompt ? (
+                <React.Fragment>
+                  <div className="joinprompt">
+                    <form onSubmit={this.joinPromptSubmit}>
+                      <label>
+                        Enter room code:
+                        <input type="text" value={this.state.value} onChange={this.joinPromptChange} />
+                      </label>
+                      <input type="submit" value="Submit" />
+                    </form>
+                    <div className="close" onClick={this.closeJoinPrompt}>X</div>
+                  </div>
+                </React.Fragment>
+              ) : null}
+            </div>
+
+          </div>
+        </div>
+
+        <div className="profile-body">
+          <h1>YOUR CURRENT GAMES</h1>
+          <p>TODO Render current games here.</p>
+        </div>
+
       </div>
     );
   }

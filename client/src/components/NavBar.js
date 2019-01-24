@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+// import logo from './logo.png';
 
 class NavBar extends Component {
     constructor(props) {
@@ -11,8 +12,10 @@ class NavBar extends Component {
         return (
           <nav className="navbar navbar-light bg-light">
             <div className="navbar-brand">
+
             HotTake
             </div>
+            <span className="navbar-text">Students Against Productivity</span>
             <div className="navbar-nav">
 
                 { this.props.userInfo === null ? (

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from '../src/logo.svg';
 import "../css/app.css";
 import Route from "react-router-dom/es/Route";
 import Switch from "react-router-dom/es/Switch";
@@ -44,7 +43,6 @@ class App extends React.Component {
       <div className="app">
 
         <NavBar userInfo={this.state.userInfo} logout={this.logout}/>
-
 
         <Switch>
           <Route exact path="/" component={this.state.userInfo ? Profile : Home} />

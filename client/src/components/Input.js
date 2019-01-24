@@ -29,12 +29,10 @@ class Input extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <textarea rows="3" placeholder="Type here..." value={this.state.value} onChange={this.handleChange} />
-          </div>
-          <button disabled={!this.state.value} type="submit">Submit</button>
-        </form>
+      <form onSubmit={this.handleSubmit}>
+        <input className="form-control form-control-lg" type="text" placeholder="Type here..." value={this.state.value} onChange={this.handleChange} />
+        <input type="submit" value="Submit" className="btn btn-light"disabled={!this.state.value} />
+      </form>
       </div>
     )
     ;

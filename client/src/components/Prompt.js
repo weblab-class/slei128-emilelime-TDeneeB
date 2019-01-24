@@ -12,7 +12,9 @@ class Prompt extends React.Component {
   render() {
     return (
       <div>
-        Prompt: {this.props.promptText}
+        <h2>
+          {this.props.promptText}
+        </h2>
       </div>
     )
     ;

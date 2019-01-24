@@ -26,30 +26,35 @@ class Joining extends React.Component {
   render() {
     console.log(this.props.game.users);
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Create a team Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+      <div className="joining">
+        <div className="container">
+          <div className="row">
+            <div className="col-7">
 
-        <p> the room code is <span className="roomid">{this.props.game.roomid}</span></p>
-
-
-        <p>{this.props.game.users.map(u => u.name).join(', ')} have joined</p>
-
-        {(this.props.isHost ? (
-          <div>
-            <p>Click start when all have joined.</p>
-            <button onClick={this.startGame}>Start Game</button>
+              <p> Your team room code is <span className="roomid">{this.props.game.roomid}</span></p>
+              <h3>Joined players <br></br> {this.props.game.users.map(u => u.name).join("\r\n")}</h3>
+              <form onSubmit={this.handleSubmit} className="teamnameform">
+                <label className="teamname">
+                  Make a team name while you wait.
+                  <input className="teamnameinput" type="text" value={this.state.value} onChange={this.handleChange} />
+                </label>
+                <input type="submit" className="btn btn-light" value="Done" />
+              </form>
+            </div>
+            <div className="col-5">
+              {(this.props.isHost ? (
+                <div>
+                  <p>Click start when all have joined.</p>
+                  <button className="btn btn-light" onClick={this.startGame}>Start Game</button>
+                </div>
+              ) : (
+                <div>
+                  <p>waiting on host to start game</p>
+                </div>
+              ))}
+            </div>
           </div>
-        ) : (
-          <div>
-            <p>waiting on host to start game</p>
-          </div>
-        ))}
+        </div>
       </div>
     );
   }
