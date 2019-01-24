@@ -1,4 +1,5 @@
 import React from "react";
+import Waiting from "./Waiting";
 
 class Vote extends React.Component {
 
@@ -42,17 +43,25 @@ class Vote extends React.Component {
     });
   }
 
+  waitingOnUser = (userid)=>{
+    return !(userid in this.props.game.votesFor);
+  }
 
   render() {
-    return (
+    return (this.waitingOnUser(this.props.userInfo._id) ? (
       <div>
         <p>{this.currentInput().text}</p>
         <button onClick={this.prev}>PREV</button>
         <button onClick={this.vote}>Vote</button>
         <button onClick={this.next}>NEXT</button>
       </div>
-    )
-    ;
+    ) : (
+      <Waiting
+        users={this.props.users}
+        waitingOnUser={this.waitingOnUser}
+        message="Waiting for all ballots to roll in..."
+      />
+    ));
   }
 }
 

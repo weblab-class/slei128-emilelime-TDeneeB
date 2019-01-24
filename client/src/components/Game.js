@@ -5,7 +5,6 @@ import Input from "./Input";
 import Joining from "./Joining";
 import Prompting from "./Prompting";
 import Vote from "./Vote";
-import Wait from "./Wait";
 import LeaderBoard from "./LeaderBoard";
 
 
@@ -64,19 +63,27 @@ class Game extends React.Component {
           );
         case 1:
           return (
-            <Prompting game={this.state.game}/>
+            <Prompting
+              game={this.state.game}
+              userInfo={this.props.userInfo}
+              users={this.state.game.users}
+            />
           );
         case 2:
           return (
-            <Wait />
+            <Waiting />
           );
         case 3:
           return (
-            <Vote game={this.state.game}/>
+            <Vote
+              game={this.state.game}
+              userInfo={this.props.userInfo}
+              users={this.state.game.users}
+            />
           );
         case 4:
           return (
-            <Wait/>
+            <Waiting />
           );
         case 5:
           return (

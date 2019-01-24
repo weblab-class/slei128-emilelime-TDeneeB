@@ -2,6 +2,7 @@ import React from "react";
 
 import Prompt from "./Prompt";
 import Input from "./Input";
+import Waiting from "./Waiting";
 
 
 class Prompting extends React.Component {
@@ -23,8 +24,12 @@ class Prompting extends React.Component {
     });
   }
 
+  waitingOnUser = (userid)=>{
+    return !(userid in this.props.game.inputs);
+  }
+
   render() {
-    return (
+    return (this.waitingOnUser(this.props.userInfo._id) ? (
       <div>
         {Object.entries(this.props.game.inputs).map(
           entry => entry[0]+' says ' +entry[1]+'! '
@@ -32,8 +37,13 @@ class Prompting extends React.Component {
         <Prompt promptText={this.props.game.currentprompt}/>
         <Input onSubmit={this.submit}/>
       </div>
-    )
-    ;
+    ) : (
+      <Waiting
+        users={this.props.users}
+        waitingOnUser={this.waitingOnUser}
+        message="Waiting for your friends to come up with the funny stuff..."
+      />
+    ));
   }
 }
 

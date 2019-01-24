@@ -105,6 +105,23 @@ h3.teamname {
   border-radius: 25px;
 }
 
+.waitingComponent {
+  padding-top: 200px;
+  text-align: center;
+}
+.waitingComponent img {
+  border-radius: 25px;
+  margin: 0 50px;
+  border: solid 20px #C0C0C0;
+}
+.waitingComponent img.ready {
+  border-color: #C0F0C0;
+}
+.waitingComponent p {
+  color: white;
+  font-size: 16px;
+}
+
 h1 { color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; }
 h2 {color: white; padding: 20px;}
 h3 { color: white;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; }
