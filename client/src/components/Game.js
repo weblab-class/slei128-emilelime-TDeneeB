@@ -12,15 +12,6 @@ import LeaderBoard from "./LeaderBoard";
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    // this.socket.on("new_game", (msg) => {
-    //   this.updateBoard(msg);
-    //   document.addEventListener("keydown", this.keyDownBound);
-    // });
-
-    // this.socket.on("update_game", (msg) => {
-    //   this.updateBoard(msg);
-    // });
-    //
     this.roomid = null;
     this.state = {
       game: null
@@ -37,7 +28,8 @@ class Game extends React.Component {
     //when backend emits a room state change, the frontend, ON CATCHING THAT,
     //changes the state
     this.socket.on('roomStateChange', (newGameStateData) => {
-      // console.log('received room state change', newGameStateData);
+      console.log('received room state change', newGameStateData);
+
       this.setState({game: newGameStateData});
     });
 

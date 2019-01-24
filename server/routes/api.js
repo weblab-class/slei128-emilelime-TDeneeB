@@ -99,7 +99,6 @@ router.post('/game/:roomid/join', (req, res) => {
   });
 });
 
-// [Math.floor(Math.random()*prompts.length)]
 //tell server we're changing gamestate to PROMPTING, when HOST clicks "startgame"
 router.post('/game/:roomid/startgame', (req,res)=> {
   req.room.gamestate = game.STATE_PROMPTING;

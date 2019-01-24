@@ -18,6 +18,21 @@ const io = require("socket.io")(http);
 const publicPath = path.resolve(__dirname, "..", "client", "dist");
 const api = require("./routes/api");
 
+let rooms = {};
+// rooms: roomID -> room
+//
+// room: users -> [User]
+// statuses -> {userID : status}
+
+
+
+
+
+
+
+
+
+
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
@@ -77,7 +92,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-// const port = (process.env.PORT||3000);
 http.listen((process.env.PORT||3000), () => {
   console.log(`Listening on port 3000 and looking in folder ${publicPath}`);
 });
