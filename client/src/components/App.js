@@ -41,7 +41,11 @@ class App extends React.Component {
             )
           )}/>
           <Route exact path="/game/:roomid" render={(props) => (
-            <Game {...props} userInfo={this.state.userInfo}/>
+            (this.state.userInfo ? (
+              <Game {...props} userInfo={this.state.userInfo}/>
+            ) : (
+              <p>Loading...</p>
+            ))
           )}/>
         </Switch>
 

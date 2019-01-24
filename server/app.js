@@ -24,15 +24,6 @@ let rooms = {};
 // room: users -> [User]
 // statuses -> {userID : status}
 
-
-
-
-
-
-
-
-
-
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
@@ -48,11 +39,6 @@ app.use(passport.session());
 
 app.use("/api", api); //this tells app to use Api.js (moved to below until set routes)
 
-//user info
-app.get(['/profile/:user'], function (req, res) {
-  res.sendFile(path.join(__dirname, '../socket/dist', 'index.html'));
-});
-
 // authentication routes
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
 
@@ -67,7 +53,6 @@ app.get(
   }
 );
 
-app.use('/api', api );
 app.use(express.static(publicPath));
 
 // logout route
@@ -75,6 +60,13 @@ app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
+
+// catch URL's handled by React Router,
+// and serve the single page web app.
+function sendSinglePageApp(req, res) {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+}
+app.get('/game/:roomid', sendSinglePageApp);
 
 // 404 route
 app.use(function(req, res, next) {
