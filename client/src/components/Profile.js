@@ -57,7 +57,7 @@ class Profile extends Component {
 
             <div className="col-4">
               <button type="button" className="btn btn-light button-padding" onClick={this.createNewGame}>Start a new game 💦</button>
-              <button type="button" className="btn btn-light button-padding" onClick={this.openJoinPrompt}>Join a game 💦</button>
+              <button type="button" className="btn btn-light button-padding hey" onClick={this.openJoinPrompt}>Join a game 💦</button>
               {this.state.joinPrompt ? (
                 <React.Fragment>
                   <div className="joinprompt">
@@ -77,11 +77,18 @@ class Profile extends Component {
           </div>
         </div>
 
-        <div className="profile-body">
-          <h1>YOUR CURRENT GAMES</h1>
-          {this.props.userInfo.currentrooms.map( room => (
-            <CurrentGameCard room={room}/>
-          )) }
+        <div>
+          <div className="divider">
+            <h1>Your current games.</h1>
+            <h3>Pick up where you left off.</h3>
+          </div>
+          <div className="profile-body">
+
+
+            {this.props.userInfo.currentrooms.map( room => (
+              <CurrentGameCard room={room}/>
+            )) }
+          </div>
         </div>
 
       </div>

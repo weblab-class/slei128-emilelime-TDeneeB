@@ -95,6 +95,25 @@ h3.teamname {
   width: 100%;
   padding: 50px;
   height:80%;
+  display: flex;
+  overflow-x: auto;
+}
+
+.current-game-card {
+  background-color: #E7E7E7;
+  position:relative;
+min-width: 200px;
+min-height: 250px;
+margin: 20px;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.current-game-card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
 }
 
 .signupbutton {
@@ -103,6 +122,69 @@ h3.teamname {
 
 .usericon {
   border-radius: 25px;
+}
+
+.divider {
+  background-color: grey;
+  padding-left: 80px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.team {
+  font-size: 18px;
+  font-family: "Helvetica Neue";
+  color: #282c34;
+  font-weight: 500;
+}
+.theteamname{
+  font-size: 30px;
+  color: #282c34;
+  font-weight: 700;
+}
+.emoji{
+  font-size: 24px;
+}
+.playButton{
+  all:unset;
+  background-color: white;
+  border-radius: 15px;
+  color: #272C34;
+  padding: 10px;
+  font-size: 18px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+
+}
+.playButton:hover{
+  all:unset;
+  background-color: white;
+  border-radius: 15px;
+  color: #272C34;
+  padding: 10px;
+  font-size: 18px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+-moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+-ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+-o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.hey {
+  display:block;
+}
+
+.cardbottom {
+  position:absolute;
+  bottom: 25px;
+
 }
 
 .waitingComponent {

@@ -10,10 +10,15 @@ class CurrentGameCard extends React.Component {
 
   render() {
     return (
-      <div>
-        <h4>Team</h4>
-        <p>{this.props.room.teamname}</p>
-        <Link to={`/game/${this.props.room.roomid}`} className="playButton">Play</Link>
+      <div className="current-game-card">
+        <p className="team">Team</p>
+        <p className="theteamname">{this.props.room.teamname}</p>
+        <div className="cardbottom">
+          <p className="emoji">🎯</p>
+          <p className="emoji">🔥</p>
+          <Link to={`/game/${this.props.room.roomid}`} className="playButton">Play</Link>
+        </div>
+
       </div>
     )
     ;
