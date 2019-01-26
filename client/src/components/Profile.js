@@ -30,9 +30,6 @@ class Profile extends Component {
   openJoinPrompt = () => {
     this.setState({joinPrompt: true});
   }
-  closeJoinPrompt = () => {
-    this.setState({joinPrompt: false});
-  }
   joinPromptSubmit = (event)=> {
     event.preventDefault();
     // should check here if room value makes sense
@@ -40,6 +37,11 @@ class Profile extends Component {
   }
   joinPromptChange = (event) => {
     this.setState({'joinRoomValue': event.target.value});
+  }
+  joinPromptBlur = (event) => {
+    if (this.state.joinRoomValue=='') {
+      this.setState({joinPrompt: false});
+    }
   }
   joinGame = (roomId) => {
     this.props.history.push('/game/'+roomId);
@@ -50,30 +52,30 @@ class Profile extends Component {
       <div className="App-header">
         <div className="profile-header">
           <div className="row">
-            <div className="col-8">
-              <h2>Welcome {this.props.userInfo.name}</h2>
-              <h4>Games 🎯{this.props.userInfo.currentrooms.length} | Score 🔥{this.props.userInfo.totalscore}</h4>
-            </div>
+          <div className="col-sm-8">
+            <div className="welcome">Welcome, {this.props.userInfo.name}</div>
+            <div className="stats">Games 🎯{this.props.userInfo.currentrooms.length} | Score 🔥{this.props.userInfo.totalscore}</div>
+          </div>
 
-            <div className="col-4">
-              <button type="button" className="btn btn-light button-padding" onClick={this.createNewGame}>Start a new game 💦</button>
-              <button type="button" className="btn btn-light button-padding hey" onClick={this.openJoinPrompt}>Join a game 💦</button>
+          <div className="col-sm-4 play-column">
+            <div className="item">
+              <button type="button" className="btn btn-light" onClick={this.createNewGame}>Start a new game 💦</button>
+            </div>
+            <div className="item">
               {this.state.joinPrompt ? (
-                <React.Fragment>
-                  <div className="joinprompt">
-                    <form onSubmit={this.joinPromptSubmit}>
-                      <label>
-                        Enter room code:
-                        <input type="text" value={this.state.value} onChange={this.joinPromptChange} />
-                      </label>
-                      <input type="submit" value="Submit" />
-                    </form>
-                    <div className="close" onClick={this.closeJoinPrompt}>X</div>
+                <form onSubmit={this.joinPromptSubmit}>
+                  <div className="input-group mb-3">
+                    <input type="text" className="form-control" value={this.state.value} onChange={this.joinPromptChange} onBlur={this.joinPromptBlur} placeholder="Enter room code..."/>
+                    <div className="input-group-append">
+                      <input type="submit" value="Join 💦" className="btn btn-outline" />
+                    </div>
                   </div>
-                </React.Fragment>
-              ) : null}
+                </form>
+              ) : (
+                <button type="button" className="btn btn-light" onClick={this.openJoinPrompt}>Join a game 💦</button>
+              )}
             </div>
-
+          </div>
           </div>
         </div>
 

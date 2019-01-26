@@ -95,7 +95,7 @@ class Game extends React.Component {
       }
     }
     return (
-      <div>Loading...</div>
+      <div className="no-room-code">Loading...</div>
     );
   }
 }

@@ -4,17 +4,13 @@ class Prompt extends React.Component {
 
   constructor (props) {
       super(props);
-      this.state = {
-
-      };
+      this.state = {};
   }
 
   render() {
     return (
-      <div>
-        <h2>
-          {this.props.promptText}
-        </h2>
+      <div className="prompt">
+        <span className="promptText">{this.props.promptText}</span>
       </div>
     )
     ;

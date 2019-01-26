@@ -12,17 +12,14 @@ class NavBar extends Component {
         return (
           <nav className="navbar navbar-light bg-light">
             <div className="navbar-brand">
-
             HotTake
             </div>
-            <span className="navbar-text">Students Against Productivity</span>
             <div className="navbar-nav">
-
                 { this.props.userInfo === null ? (
                   <React.Fragment>
                     <Link to="/" className="nav-item nav-link">Home</Link>
                     <a className="nav-item nav-link" href="/auth/google">Login</a>
-                    </React.Fragment>
+                  </React.Fragment>
                 ) : (
                     <React.Fragment>
 

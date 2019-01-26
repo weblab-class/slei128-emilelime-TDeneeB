@@ -28,10 +28,10 @@ class Input extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="promptInput">
       <form onSubmit={this.handleSubmit}>
-        <input className="form-control form-control-lg" type="text" placeholder="Type here..." value={this.state.value} onChange={this.handleChange} />
-        <input type="submit" value="Submit" className="btn btn-light"disabled={!this.state.value} />
+        <textarea className="form-control form-control-lg input-text" type="text" placeholder="Type here..." value={this.state.value} onChange={this.handleChange} rows="3"/>
+        <input type="submit" value="" className="btn btn-light floating-button send-button"disabled={!this.state.value} />
       </form>
       </div>
     )

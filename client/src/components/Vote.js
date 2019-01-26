@@ -1,6 +1,6 @@
 import React from "react";
 import Waiting from "./Waiting";
-
+import Prompt from "./Prompt";
 class Vote extends React.Component {
 
   constructor (props) {
@@ -49,8 +49,11 @@ class Vote extends React.Component {
 
   render() {
     return (this.waitingOnUser(this.props.userInfo._id) ? (
-      <div>
-        <p>{this.currentInput().text}</p>
+      <div className="vote">
+        <Prompt promptText={this.props.game.currentprompt}/>
+        <div className="inputCard">
+          {this.currentInput().text}
+        </div>
         <button onClick={this.prev}>PREV</button>
         <button onClick={this.vote}>Vote</button>
         <button onClick={this.next}>NEXT</button>

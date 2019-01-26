@@ -27,13 +27,14 @@ class Prompting extends React.Component {
   waitingOnUser = (userid)=>{
     return !(userid in this.props.game.inputs);
   }
-
+/*
+{Object.entries(this.props.game.inputs).map(
+  entry => entry[0]+' says ' +entry[1]+'! '
+).join('')}
+*/
   render() {
     return (this.waitingOnUser(this.props.userInfo._id) ? (
-      <div>
-        {Object.entries(this.props.game.inputs).map(
-          entry => entry[0]+' says ' +entry[1]+'! '
-        ).join('')}
+      <div className="prompting">
         <Prompt promptText={this.props.game.currentprompt}/>
         <Input onSubmit={this.submit}/>
       </div>

@@ -1,7 +1,10 @@
 /* body > #root > div {
   height: 100vh;
 } */
-
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal; font-variant: normal;
+}
 html {
     height: 100%;
 }
@@ -19,6 +22,14 @@ text {
   background-color: #272C34;
   height: 100%;
   min-height: 100vh;
+}
+
+.navbar-nav {
+  flex-direction: row!important;
+}
+.navbar .nav-item {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
 }
 
 .App-header {
@@ -44,10 +55,90 @@ text {
     flex-direction: column;
 }
 
-.joining {
-  height: 100%;
-  padding: 50px;
+/* PROMPTING input */
+.prompting, .vote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px;
 }
+.promptText, .input-text, .inputCard {
+  font-size: 48px;
+  font-weight: 800;
+  color: #86888C;
+  line-height: 1.1;
+}
+.prompting form {
+  position: relative;
+  overflow: auto;
+}
+.prompting textarea, .inputCard {
+  display: block;
+  width: 50vw;
+  height: 30vw;
+  font-size: 6vw;
+  padding: 5vw;
+  margin: 60px 0 90px 0;
+  color: #86888C;
+  background-color: white;
+  border: none;
+  border-radius: 2vw;
+  transition: 0.2rem 0.8rem 1.6rem 300ms;
+  resize: none;
+  overflow: auto;
+}
+.prompting .send-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-image: url(/send-icon.svg);
+  background-position: 12px center;
+  background-size: 30px;
+  background-repeat: no-repeat;
+}
+
+.floating-button {
+  bottom: 60px;
+  right: 60px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: white;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.input-text::placeholder {
+  color: #B0BEC5;
+}
+
+.input-text:focus {
+  outline: none;
+  box-shadow: 0.2rem 0.8rem 1.6rem #5e35b1;
+}
+
+/* JOINING */
+.joined-players {
+  color: white;
+  font-size: 24px;
+  display: block;
+}
+.joiner-photo {
+  border-radius: 25px;
+}
+
+.row {
+  height: 100%;
+}
+.joining .col-sm-5, .joining .col-sm-7 {
+  padding-top: 60px;
+}
+.joining .col-sm-5 {
+  padding-left: 60px;
+}
+.col-sm-5.start-game {
+  padding: 60px;
+}
+
 .roomid {
   color: white;
   font-size: 24px;
@@ -58,62 +149,72 @@ form.inlineForm {
   display: inline;
 }
 form.inlineForm input {
-  background: none;
-  border: none;
-  border-bottom: 2px solid #C0C0C0;
-  color: white;
-  margin-left: .1em;
-  outline: none !important;
+    background: none;
+    border: none;
+    color: white;
+    margin-left: .3em;
+    outline: none !important;
+    display: inline;
+    width: 100px;
 }
 form.inlineForm input:focus {
-  border-bottom: 2px solid white;
+  border-bottom: 1.5px solid #F8F9FA;
+  margin-left: .3em;
+  width: 200px;
 }
-form.inlineForm button {
-  border-radius: 30px;
-}
-
 h3.teamname {
   font-size: 32px;
   line-height: 40px;
   margin: 0 0 40px 0;
 }
 
-.button-padding {
-  margin: 3px;
-}
-
 .profile-header {
   background-color: #282c34;
-  display: block;
-  text-align: left;
-  padding: 80px;
-
-
+  margin: 0 60px;
 }
+.profile-header .col-sm-4, .profile-header .col-sm-8 {
+  margin: 60px 0;
+}
+.profile-header .welcome {
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 500;
+}
+.profile-header .stats {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+}
+.play-column .item {
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
 .profile-body {
-  background-color: #505050;
-  width: 100%;
-  padding: 50px;
-  height:80%;
-  display: flex;
-  overflow-x: auto;
+  background-color: #1D2126;
+width: 100%;
+padding: 60px;
+height: 80%;
+display: flex;
+overflow-x: auto;
 }
 
 .current-game-card {
-  background-color: #E7E7E7;
-  position:relative;
-min-width: 200px;
-min-height: 250px;
-margin: 20px;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  background-color: #F8F9FA;
+    position: relative;
+    min-width: 200px;
+    min-height: 250px;
+    margin-right: 20px;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 .current-game-card:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
+  transform: scale(1.25);
+  z-index: 5;
 }
 
 .signupbutton {
@@ -125,10 +226,11 @@ box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .divider {
-  background-color: grey;
-  padding-left: 80px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  background-color: #1D2126;
+    padding: 60px 60px 0 60px;
+    /* padding-top: 40px; */
+    /* padding-bottom: 5px; */
+    overflow: auto;
 }
 .team {
   font-size: 18px;
@@ -141,15 +243,25 @@ box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   color: #282c34;
   font-weight: 700;
 }
+
 .emoji{
   font-size: 24px;
 }
+
+.no-room-code {
+  font-size: 24px;
+  color: white;
+  padding: 60px;
+}
+
 .playButton{
   all:unset;
+  cursor: pointer;
   background-color: white;
   border-radius: 15px;
   color: #272C34;
   padding: 10px;
+  font-weight: 420;
   font-size: 18px;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -176,9 +288,6 @@ box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
-.hey {
-  display:block;
 }
 
 .cardbottom {
@@ -209,3 +318,4 @@ h2 {color: white; padding: 20px;}
 h3 { color: white;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; }
 h4{padding-top: 10px; padding-left: 20px;}
 p { color: white;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; }
+h5 {padding: 60px;color: #86888C; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 50px; font-style: normal; font-variant: normal; font-weight: 850; line-height: 26.4px;}

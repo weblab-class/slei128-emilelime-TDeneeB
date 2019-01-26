@@ -1,4 +1,5 @@
 import React from "react";
+// import UserCard from "./UserCard";
 
 class Joining extends React.Component {
 
@@ -46,25 +47,26 @@ class Joining extends React.Component {
       <div className="joining">
         <div className="container">
           <div className="row">
-            <div className="col-7">
+            <div className="col-sm-7">
               <h3 className="teamname">
                 Team
                 {(this.props.isHost ? (
                   <form onSubmit={this.handleSubmitTeamName} className="teamnameform inlineForm">
-                    <input className="teamnameinput" type="text" placeholder="name..." value={this.state.teamname} onChange={this.handleChangeTeamName} />
-                    <input type="submit" className="btn btn-light" value="✓" />
+                    <input type="text" placeholder="Name" value={this.state.teamname} onChange={this.handleChangeTeamName} />
                   </form>
                 ) : (
                   this.props.game.teamname
                 ))}</h3>
               <p> Your team room code is <span className="roomid">{this.props.game.roomid}</span></p>
-              <h3>Joined players <br></br> {this.props.game.users.map(u => u.name).join("\r\n")}</h3>
-
+              <div className="joined-players">Joined players <br></br>
+                <div className="joiner-photo">{this.props.game.users.map((user) => (<img src={user.photo} />))}</div>
+                <div>{this.props.game.users.map(u => u.name).join("\r\n")}</div>
+              </div>
             </div>
-            <div className="col-5">
+            <div className="col-sm-5 start-game">
               {(this.props.isHost ? (
                 <div>
-                  <p>Click start when all have joined.</p>
+                  <p>Hit start when all have joined.</p>
                   <button className="btn btn-light" onClick={this.startGame}>Start Game</button>
                 </div>
               ) : (
