@@ -6,8 +6,20 @@ class Vote extends React.Component {
   constructor (props) {
       super(props);
       this.inputs = [];
+      let i = 0;
       Object.keys(props.game.inputs).forEach( (userid) => {
-        this.inputs.push({user: userid, text: props.game.inputs[userid]});
+        this.inputs.push({
+          number: i,
+          user: userid,
+          text: props.game.inputs[userid],
+          style: {
+            zIndex: 100-i,
+            transform: 'translateX('+(-40 + Math.random()*80) +'px) '+
+                       'translateY('+(-40 + Math.random()*80) +'px) '+
+                       'rotate('    +(-10 + Math.random()*20) +'deg)'
+          }
+        });
+        i++;
       });
       this.state = {
         whichInput: 0
@@ -51,12 +63,22 @@ class Vote extends React.Component {
     return (this.waitingOnUser(this.props.userInfo._id) ? (
       <div className="vote">
         <Prompt promptText={this.props.game.currentprompt}/>
-        <div className="inputCard">
-          {this.currentInput().text}
+        <div className="cardHolder">
+          {this.inputs.map((input) => (
+            <div
+              key={input.number}
+              className={"inputCard " +
+                (input.number<this.state.whichInput?'offscreen ':'') +
+                (input.number==this.state.whichInput?'hasfocus ':'')}
+              style={input.style}
+            >
+              {input.text}
+            </div>
+          ))}
+          <button className="floating-button btn-prev" onClick={this.prev}>&lt;</button>
+          <button className="floating-button btn-vote" onClick={this.vote}>🔥</button>
+          <button className="floating-button btn-next" onClick={this.next}>&gt;</button>
         </div>
-        <button onClick={this.prev}>PREV</button>
-        <button onClick={this.vote}>Vote</button>
-        <button onClick={this.next}>NEXT</button>
       </div>
     ) : (
       <Waiting

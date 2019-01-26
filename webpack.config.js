@@ -41,6 +41,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './client/dist',
+    watchOptions: {poll: true},
     hot: true,
     proxy: {
       '/api': 'http://localhost:3000',
