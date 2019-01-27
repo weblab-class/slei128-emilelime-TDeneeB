@@ -42,7 +42,7 @@ class Prompting extends React.Component {
       <Waiting
         users={this.props.users}
         waitingOnUser={this.waitingOnUser}
-        message="Waiting for your friends to come up with the funny stuff..."
+        message="Now that's a hot take! Waiting for your friends to come up with the funny stuff..."
       />
     ));
   }

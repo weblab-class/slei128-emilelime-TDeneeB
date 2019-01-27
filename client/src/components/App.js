@@ -14,7 +14,8 @@ class App extends React.Component {
   constructor (props) {
       super(props);
       this.state = {
-        userInfo: null
+        userInfo: null,
+        gameInfo: null
       };
   }
 
@@ -22,8 +23,12 @@ class App extends React.Component {
       this.getUser();
   }
 
-  render() {
+  myCallback = (dataFromGameComp) => {
+      this.setState({ gameInfo: dataFromGameComp });
+    }
 
+  render() {
+    console.log(this.state.gameInfo);
     return (
       <div className="app">
         <NavBar userInfo={this.state.userInfo} logout={this.logout}/>
@@ -34,6 +39,7 @@ class App extends React.Component {
               <Profile {...props}
                 userInfo={this.state.userInfo}
                 refreshUser={this.getUser}
+                game = {this.state.gameInfo}
               />
             ) : (
               <Home/>
@@ -41,9 +47,9 @@ class App extends React.Component {
           )}/>
           <Route exact path="/game/:roomid" render={(props) => (
             (this.state.userInfo ? (
-              <Game {...props} userInfo={this.state.userInfo}/>
+              <Game {...props} userInfo={this.state.userInfo} callbackFromParent={this.myCallback}/>
             ) : (
-              <p>Loading...</p>
+              <p className="instructions">Loading...</p>
             ))
           )}/>
         </Switch>
@@ -68,7 +74,7 @@ class App extends React.Component {
                 this.setState({
                     userInfo: userObj
                 });
-                console.log(this.state.userInfo);
+                // console.log(this.state.userInfo);
             } else {
                 this.setState({
                     userInfo: null

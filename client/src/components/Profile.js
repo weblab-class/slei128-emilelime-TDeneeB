@@ -88,7 +88,7 @@ class Profile extends Component {
 
 
             {this.props.userInfo.currentrooms.map( room => (
-              <CurrentGameCard room={room}/>
+              <CurrentGameCard room={room} game={this.props.game}/>
             )) }
           </div>
         </div>

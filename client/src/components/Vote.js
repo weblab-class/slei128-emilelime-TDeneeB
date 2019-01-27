@@ -75,16 +75,16 @@ class Vote extends React.Component {
               {input.text}
             </div>
           ))}
-          <button className="floating-button btn-prev" onClick={this.prev}>&lt;</button>
+          <button className="floating-button btn-prev scroll-button-flipped" onClick={this.prev}></button>
           <button className="floating-button btn-vote" onClick={this.vote}>🔥</button>
-          <button className="floating-button btn-next" onClick={this.next}>&gt;</button>
+          <button className="floating-button btn-next scroll-button" onClick={this.next}></button>
         </div>
       </div>
     ) : (
       <Waiting
         users={this.props.users}
         waitingOnUser={this.waitingOnUser}
-        message="Waiting for all ballots to roll in..."
+        message="Got your vote. Waiting for all ballots to roll in..."
       />
     ));
   }

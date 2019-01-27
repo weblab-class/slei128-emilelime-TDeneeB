@@ -22,6 +22,7 @@ text {
   background-color: #272C34;
   height: 100%;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .navbar-nav {
@@ -33,7 +34,6 @@ text {
 }
 
 .App-header {
-
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -110,7 +110,8 @@ text {
 }
 
 .input-text::placeholder {
-  color: #B0BEC5;
+  color: #86888C;
+  font-weight: 600;
 }
 
 .input-text:focus {
@@ -120,7 +121,7 @@ text {
 
 /* VOTE */
 .vote {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .vote .cardHolder {
   position: relative;
@@ -154,15 +155,50 @@ text {
   right: -120px;
   font-size: 30px;
 }
+.vote .scroll-button-flipped {
+  transform: scaleX(-1);
+  background-image: url(/arrow-icon.svg);
+  opacity: 0.75;
+  background-position: 14px center;
+  background-size: 30px;
+  background-repeat: no-repeat;
+}
+.vote .scroll-button {
+  opacity: 0.75;
+  background-image: url(/arrow-icon.svg);
+  background-position: 14px center;
+  background-size: 30px;
+  background-repeat: no-repeat;
+}
 
 /* JOINING */
 .joined-players {
-  color: white;
-  font-size: 24px;
-  display: block;
+  font-size: 25px;
+    font-weight: 800;
+    color: #86888C;
+    line-height: 1.1;
+    display: block;
+    margin: 80px 0 25px 0;
+
 }
-.joiner-photo {
-  border-radius: 25px;
+/* .one-joiner {
+  text-align: center;
+  justify-content: center;
+} */
+.joining img {
+  border: solid 10px #C0F0C0;
+  border-radius: 55px;
+  margin: 0 -10px;
+  height: 110px;
+  width: 110px;
+}
+.joiners {
+  color: white;
+  display: block;
+  font-size: 25px;
+  font-weight: 800;
+  margin: 20px 0 10px 0;
+  /* text-align: center; */
 }
 
 .row {
@@ -180,31 +216,57 @@ text {
 
 .roomid {
   color: white;
-  font-size: 24px;
-  display: block;
+    display: block;
+    font-size: 40px;
+    font-weight: 800;
 }
 
 form.inlineForm {
   display: inline;
 }
-form.inlineForm input {
+form.inlineForm .teamname-input {
     background: none;
     border: none;
     color: white;
     margin-left: .3em;
     outline: none !important;
     display: inline;
-    width: 100px;
+        width: 270px;
 }
-form.inlineForm input:focus {
+form.inlineForm .teamname-input:focus {
   border-bottom: 1.5px solid #F8F9FA;
   margin-left: .3em;
   width: 200px;
 }
-h3.teamname {
-  font-size: 32px;
-  line-height: 40px;
-  margin: 0 0 40px 0;
+
+form.inlineForm .teamname-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: white;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  border: none;
+  font-size: 26px;
+}
+/* form.inlineForm .teamname-button::placeholder{
+  font-size: 48px;
+  font-weight: 800;
+  color: #86888C;
+  line-height: 1.1;
+} */
+
+.teamname {
+  font-size: 48px;
+  font-weight: 800;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 35px;
+}
+.your-team {
+      font-size: 25px;
+  font-weight: 800;
+  color: #86888C;
+  line-height: 1.1;
 }
 
 .profile-header {
@@ -230,24 +292,27 @@ h3.teamname {
 
 .profile-body {
   background-color: #1D2126;
-width: 100%;
-padding: 60px;
-height: 80%;
-display: flex;
-overflow-x: auto;
+  width: 100%;
+  padding: 60px;
+  height: 80%;
+  display: flex;
+  overflow-x: auto;
 }
 
 .current-game-card {
   background-color: #F8F9FA;
-    position: relative;
-    min-width: 200px;
-    min-height: 250px;
-    margin-right: 20px;
-    padding: 20px;
-    cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  position: relative;
+  min-width: 200px;
+  min-height: 250px;
+  margin-right: 20px;
+  padding: 20px;
+  cursor: pointer;
+  overflow-x: auto;
+  line-height: 1.02;
+  word-wrap: break-word;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 .current-game-card:hover {
@@ -276,6 +341,7 @@ overflow-x: auto;
   font-family: "Helvetica Neue";
   color: #282c34;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 .theteamname{
   font-size: 30px;
@@ -294,13 +360,12 @@ overflow-x: auto;
 }
 
 .playButton{
-  all:unset;
   cursor: pointer;
   background-color: white;
   border-radius: 15px;
   color: #272C34;
   padding: 10px;
-  font-weight: 420;
+  font-weight: 445;
   font-size: 18px;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -315,12 +380,13 @@ overflow-x: auto;
 
 }
 .playButton:hover{
-  all:unset;
   background-color: white;
   border-radius: 15px;
   color: #272C34;
   padding: 10px;
+  font-weight: 445;
   font-size: 18px;
+  border-bottom: none;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -340,16 +406,28 @@ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   text-align: center;
 }
 .waitingComponent img {
-  border-radius: 25px;
+  border-radius: 55px;
   margin: 0 50px;
-  border: solid 20px #C0C0C0;
+  border: solid 10px #F8F9FA;
+  height: 110px;
+  width: 110px;
 }
 .waitingComponent img.ready {
   border-color: #C0F0C0;
 }
 .waitingComponent p {
-  color: white;
-  font-size: 16px;
+  font-size: 48px;
+  font-weight: 800;
+  color: #86888C;
+  line-height: 1.1;
+  margin: 12vw 5vw 0 5vw;
+}
+
+.instructions{
+  font-size: 40px;
+font-weight: 800;
+color: white;
+line-height: 1.1;
 }
 
 h1 { color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; }

@@ -8,11 +8,16 @@ class CurrentGameCard extends React.Component {
       this.state = {};
   }
 
+
   render() {
+    // console.log(this.props.room.users.map(u => u.totalscore).join(","));
+    // console.log(this.props.room);
+    console.log(this.props.game);
     return (
       <div className="current-game-card">
         <p className="team">Team</p>
-        <p className="theteamname">{this.props.room.teamname}</p>
+        <span className="theteamname">{this.props.room.teamname}</span>
+        <p className="team">There are {this.props.room.users.length} players</p>
         <div className="cardbottom">
           <p className="emoji">🎯</p>
           <p className="emoji">🔥</p>

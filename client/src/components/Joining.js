@@ -39,8 +39,6 @@ class Joining extends React.Component {
 
   }
 
-
-
   render() {
     console.log(this.props.game.users);
     return (
@@ -48,30 +46,32 @@ class Joining extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-sm-7">
-              <h3 className="teamname">
-                Team
+              <div className="teamname">
+                <span>Team </span>
                 {(this.props.isHost ? (
-                  <form onSubmit={this.handleSubmitTeamName} className="teamnameform inlineForm">
-                    <input type="text" placeholder="Name" value={this.state.teamname} onChange={this.handleChangeTeamName} />
+                  <form onSubmit={this.handleSubmitTeamName} className={"teamnameform inlineForm"}>
+                    <input type="text" className="teamname-input" placeholder="Name" value={this.state.teamname} onChange={this.handleChangeTeamName} />
+                    <input type="submit" className="teamname-button" value="👌" />
                   </form>
                 ) : (
                   this.props.game.teamname
-                ))}</h3>
-              <p> Your team room code is <span className="roomid">{this.props.game.roomid}</span></p>
-              <div className="joined-players">Joined players <br></br>
+                ))}</div>
+              <div className="your-team"> Your team room code is <span className="roomid">{this.props.game.roomid}</span></div>
+              <div className="joined-players">Joined players</div>
+              <div>
                 <div className="joiner-photo">{this.props.game.users.map((user) => (<img src={user.photo} />))}</div>
-                <div>{this.props.game.users.map(u => u.name).join("\r\n")}</div>
+                <div className="joiners">{this.props.game.users.map(u => u.name).join(",\n")}</div>
               </div>
             </div>
             <div className="col-sm-5 start-game">
               {(this.props.isHost ? (
                 <div>
-                  <p>Hit start when all have joined.</p>
-                  <button className="btn btn-light" onClick={this.startGame}>Start Game</button>
+                  <p className="instructions">Hit start when all have joined.</p>
+                  <button className="btn btn-light" onClick={this.startGame}>Start Game 💦</button>
                 </div>
               ) : (
-                <div>
-                  <p>waiting on host to start game</p>
+                <div className="instructions">
+                  Waiting on host to start game...
                 </div>
               ))}
             </div>

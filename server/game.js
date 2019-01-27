@@ -11,13 +11,13 @@ const STATE_LEADERBOARD = 5;
 const prompts = [
     {
       key: 0,
-      text: "Prompt 0: say something funny",
+      text: "If your friend calls you to get out of an awful date, what do you say?",
       type: "advice",
       pastInputs: []
     },
     {
       key: 1,
-      text: "Prompt 1: say something funny",
+      text: "What to do when the ex warms up to your best friend?",
       type: "truth",
       pastInputs: []
     },
