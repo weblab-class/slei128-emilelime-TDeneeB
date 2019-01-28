@@ -81,7 +81,7 @@ text {
   margin: 60px;
 }
 .promptText, .input-text, .inputCard {
-  font-size: 48px;
+  font-size: 5vw;
   font-weight: 800;
   color: #86888C;
   line-height: 1.1;
@@ -94,7 +94,7 @@ text {
   display: block;
   width: 50vw;
   height: 30vw;
-  font-size: 6vw;
+  font-size: 5vw;
   padding: 5vw;
   margin: 60px 0 90px 0;
   color: #86888C;
@@ -243,7 +243,7 @@ text {
 form.inlineForm {
   display: inline;
 }
-form.inlineForm .teamname-input {
+.teamname-input {
     background: none;
     border: none;
     color: white;
@@ -252,27 +252,11 @@ form.inlineForm .teamname-input {
     display: inline;
         width: 270px;
 }
-form.inlineForm .teamname-input:focus {
+.teamname-input:focus {
   border-bottom: 1.5px solid #F8F9FA;
   margin-left: .3em;
   width: 200px;
 }
-
-form.inlineForm .teamname-button {
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  background-color: white;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  border: none;
-  font-size: 26px;
-}
-/* form.inlineForm .teamname-button::placeholder{
-  font-size: 48px;
-  font-weight: 800;
-  color: #86888C;
-  line-height: 1.1;
-} */
 
 .teamname {
   font-size: 48px;

@@ -26,9 +26,7 @@ class Joining extends React.Component {
   handleChangeTeamName = (event)=>{
     this.setState({teamname: event.target.value});
   }
-
-  handleSubmitTeamName = (event)=>{
-    event.preventDefault();
+  handleBlurTeamName = (event) => {
     fetch('/api/game/'+this.props.game.roomid+'/maketeamname', {
       method: 'POST',
       headers: {
@@ -36,11 +34,9 @@ class Joining extends React.Component {
       },
       body: JSON.stringify({'teamname': this.state.teamname})
     });
-
   }
 
   render() {
-    console.log(this.props.game.users);
     return (
       <div>
       <div className = "top-bar">Getting your team set up 👯</div>
@@ -51,10 +47,7 @@ class Joining extends React.Component {
               <div className="teamname">
                 <span>Team </span>
                 {(this.props.isHost ? (
-                  <form onSubmit={this.handleSubmitTeamName} className={"teamnameform inlineForm"}>
-                    <input type="text" className="teamname-input" placeholder="Name" value={this.state.teamname} onChange={this.handleChangeTeamName} />
-                    <input type="submit" className="teamname-button" value="👌" />
-                  </form>
+                  <input type="text" className="teamname-input" placeholder="Name" value={this.state.teamname} onChange={this.handleChangeTeamName} onBlur={this.handleBlurTeamName}/>
                 ) : (
                   this.props.game.teamname
                 ))}</div>
