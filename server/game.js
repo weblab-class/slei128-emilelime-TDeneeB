@@ -196,62 +196,74 @@ const prompts = [
       pastInputs: []
     },
     {
-      key: 28,
+      key: 31,
       text: "Hottest celebrity over fifty.",
       type: "roast",
       pastInputs: []
     },
     {
-      key: 29,
+      key: 32,
       text: "Most eligible person in this group for The Bachelor/Bachelorette.",
       type: "roast",
       pastInputs: []
     },
     {
-      key: 30,
+      key: 33,
       text: "Craziest thing you would pull for $100K.",
       type: "roast",
       pastInputs: []
     },
     {
-      key: 30,
+      key: 34,
       text: "Never have I ever...",
       type: "roast",
       pastInputs: []
     },
     {
-      key: 28,
+      key: 35,
       text: "Kiss, marry, kill: Jimmy Fallon, Stephen Colbert, Conan O'Brien",
       type: "roast",
       pastInputs: []
     },
     {
-      key: 29,
+      key: 36,
       text: "A ~millenial slang ~ that should stay in 2018.",
       type: "roast",
       pastInputs: []
     },
     {
-      key: 30,
+      key: 37,
       text: "Kiss, marry, kill: who would they be in this group.",
       type: "roast",
       pastInputs: []
     },
     {
-      key: 31,
+      key: 38,
       text: "Best lie you've told to date.",
       type: "roast",
       pastInputs: []
     },
     {
-      key: 32,
+      key: 39,
       text: "Best pickup line to hit on your TA.",
       type: "roast",
       pastInputs: []
     },
     {
-      key: 33,
+      key: 40,
       text: "But really, why did the chicken cross the road",
+      type: "roast",
+      pastInputs: []
+    },
+    {
+      key: 41,
+      text: "Nothing quite like simutaneously ____ and ____.",
+      type: "roast",
+      pastInputs: []
+    },
+    {
+      key: 42,
+      text: "Worst date nightmare.",
       type: "roast",
       pastInputs: []
     }

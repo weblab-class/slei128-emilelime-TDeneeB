@@ -40,8 +40,9 @@ class LeaderBoard extends React.Component {
     return (
       <div>
       <div className = "top-bar">Round reveals 🔥 <span className="game-tracker">Team <span className="actualteamname">{this.props.game.teamname}</span>  |  Round 🎯<span className="actualteamname">{this.props.game.roundnumber}</span></span></div>
+      <div className="leaderboard-prompt">{this.props.game.currentprompt}</div>
       <div className="leaderboard-page">
-
+        
         <div className = "all-cards">
           {cards.map(card => (
             <Card
