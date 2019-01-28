@@ -51,7 +51,7 @@ class LeaderBoard extends React.Component {
             />
 
         ))}
-        <button onClick={this.nextRound}>Start Next Round</button>
+        <button className="btn btn-light"onClick={this.nextRound}>Next Round of HotTakes 💦</button>
       </div>
     );
   }

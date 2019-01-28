@@ -15,7 +15,7 @@ class Card extends React.Component {
         <div className="by">
           Written by:
           <img className="usericon" src={this.props.author.photo}/>
-          {this.props.author.name}
+          {this.props.author.name.split(" ")[0]}
         </div>
         <div className="quote">{this.props.text}</div>
         <div className="numVotesThisRound">+{this.props.votesThisRound}🔥</div>
@@ -24,7 +24,7 @@ class Card extends React.Component {
             this.props.usersThatVoted.map(user => (
               <div key={`VoteBy_${user.userid}`}>
                 <img className="usericon" src={user.photo}/>
-                {user.name}
+                {user.name.split(" ")[0]}
               </div>
             ))
           ) : (
