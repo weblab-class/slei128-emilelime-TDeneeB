@@ -269,6 +269,13 @@ form.inlineForm .teamname-button {
   line-height: 1.1;
 }
 
+.profile-totalvotes {
+  font-size: 25px;
+font-weight: 800;
+color: #86888C;
+line-height: 1.1;
+}
+
 .profile-header {
   background-color: #282c34;
   margin: 0 60px;
@@ -299,11 +306,23 @@ form.inlineForm .teamname-button {
   overflow-x: auto;
 }
 
+.players-in-game {
+  font-size: 12px;
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  color: #1D2126;
+  font-weight: 400;
+  margin: 5px 0 5px 0;
+  line-height: 1.15;
+}
+
 .current-game-card {
   background-color: #F8F9FA;
   position: relative;
   min-width: 200px;
   min-height: 250px;
+  max-width: 200px;
+  max-height: 250px;
   margin-right: 20px;
   padding: 20px;
   cursor: pointer;
@@ -341,7 +360,7 @@ form.inlineForm .teamname-button {
   font-family: "Helvetica Neue";
   color: #282c34;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 }
 .theteamname{
   font-size: 30px;
@@ -350,7 +369,10 @@ form.inlineForm .teamname-button {
 }
 
 .emoji{
-  font-size: 24px;
+  font-size: 21px;
+  margin-bottom: 13px;
+  color: #282c34;
+  font-weight: 800;
 }
 
 .no-room-code {
@@ -362,11 +384,11 @@ form.inlineForm .teamname-button {
 .playButton{
   cursor: pointer;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 8px;
   color: #272C34;
   padding: 10px;
-  font-weight: 445;
-  font-size: 18px;
+  font-weight: 505;
+  font-size: 16px;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -381,11 +403,11 @@ form.inlineForm .teamname-button {
 }
 .playButton:hover{
   background-color: white;
-  border-radius: 15px;
+  border-radius: 8px;
   color: #272C34;
   padding: 10px;
-  font-weight: 445;
-  font-size: 18px;
+  font-weight: 505;
+  font-size: 16px;
   border-bottom: none;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);

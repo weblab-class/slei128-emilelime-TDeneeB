@@ -40,14 +40,16 @@ class LeaderBoard extends React.Component {
     return (
       <div>
         {cards.map(card => (
-          <Card
-            author={card.author}
-            key={`Card_${card.userid}`}
-            text={card.text}
-            votesThisRound={card.votesThisRound}
-            totalVotes={card.totalVotes}
-            usersThatVoted = {card.usersThatVoted}
-          />
+
+            <Card
+              author={card.author}
+              key={`Card_${card.userid}`}
+              text={card.text}
+              votesThisRound={card.votesThisRound}
+              totalVotes={card.totalVotes}
+              usersThatVoted = {card.usersThatVoted}
+            />
+
         ))}
         <button onClick={this.nextRound}>Start Next Round</button>
       </div>

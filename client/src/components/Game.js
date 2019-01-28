@@ -34,10 +34,6 @@ class Game extends React.Component {
     });
 
   }
-  someFn = () => {
-    let gameInfo = this.state.game;
-    this.props.callbackFromParent(gameInfo);
-    }
 
   //fetches something like /api/game/fjw8 from api.js
   loadGame = () => {

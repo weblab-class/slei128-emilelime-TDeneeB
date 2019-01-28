@@ -14,8 +14,7 @@ class App extends React.Component {
   constructor (props) {
       super(props);
       this.state = {
-        userInfo: null,
-        gameInfo: null
+        userInfo: null
       };
   }
 
@@ -23,9 +22,6 @@ class App extends React.Component {
       this.getUser();
   }
 
-  myCallback = (dataFromGameComp) => {
-      this.setState({ gameInfo: dataFromGameComp });
-    }
 
   render() {
     console.log(this.state.gameInfo);
@@ -47,7 +43,7 @@ class App extends React.Component {
           )}/>
           <Route exact path="/game/:roomid" render={(props) => (
             (this.state.userInfo ? (
-              <Game {...props} userInfo={this.state.userInfo} callbackFromParent={this.myCallback}/>
+              <Game {...props} userInfo={this.state.userInfo} />
             ) : (
               <p className="instructions">Loading...</p>
             ))

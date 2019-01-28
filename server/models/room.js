@@ -14,7 +14,8 @@ const RoomModelSchema = new mongoose.Schema({
   inputs: {type: Map, of: String},
   votesFor: {type: Map, of: String},
   score: {type: Map, of: Number},
-  gamestate: Number
+  gamestate: Number,
+  roundnumber: Number
 });
 
 /*

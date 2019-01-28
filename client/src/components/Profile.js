@@ -85,10 +85,8 @@ class Profile extends Component {
             <h3>Pick up where you left off.</h3>
           </div>
           <div className="profile-body">
-
-
             {this.props.userInfo.currentrooms.map( room => (
-              <CurrentGameCard room={room} game={this.props.game}/>
+              <CurrentGameCard roomid={room.roomid} room={room}/>
             )) }
           </div>
         </div>
