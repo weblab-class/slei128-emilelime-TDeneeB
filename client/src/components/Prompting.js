@@ -43,7 +43,7 @@ class Prompting extends React.Component {
       </div>
     ) : (
       <div>
-      <div className = "top-bar">Waiting on delinquents 🤦‍♀️...| Team {this.props.game.teamname} | Round {this.props.game.roundnumber}</div>
+      <div className = "top-bar">Waiting on delinquents 🤦‍♀️...<span className="game-tracker">Team <span className="actualteamname">{this.props.game.teamname}</span>  |  Round 🎯<span className="actualteamname">{this.props.game.roundnumber}</span></span></div>
       <Waiting
         users={this.props.users}
         waitingOnUser={this.waitingOnUser}

@@ -201,7 +201,7 @@ text {
   justify-content: center;
 } */
 .joining img {
-  border: solid 10px #C0F0C0;
+  border: solid 10px #9b3658;
   border-radius: 55px;
   margin: 0 -10px;
   height: 110px;
@@ -478,7 +478,7 @@ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   width: 110px;
 }
 .waitingComponent img.ready {
-  border-color: #C0F0C0;
+  border-color: #9b3658;
 }
 .waitingComponent p {
   font-size: 48px;
@@ -523,12 +523,15 @@ line-height: 1.1;
 
 .top-bar {
   background-color: #1D2126;
+  border-radius: 20px;
+  margin: 15px;
   color: #F8F9FA;
   font-size: 20px;
   font-weight: 350;
   color: white;
   line-height: 1.1;
   padding: 20px 0px 20px 40px;
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
 
   background: linear-gradient(119deg, #282c34, #9b3658);
   background-size: 400% 400%;
@@ -620,6 +623,9 @@ color: #F8F9FA;
   width: 20px;
   margin-right: 10px;
   margin-left: 10px;
+}
+.votedusername {
+  font-weight: 450px;
 }
 
 .row-here {
