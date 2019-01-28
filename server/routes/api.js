@@ -55,7 +55,7 @@ router.post('/newroom', (req,res) => {
     votesFor: {},
     score: {},
     gamestate: game.STATE_JOINING,
-    roundnumber: 0
+    roundnumber: 1
   });
 
   newRoom.save(function(err, room) {
@@ -129,7 +129,7 @@ router.post('/game/:roomid/join', (req, res) => {
 router.post('/game/:roomid/startgame', (req,res)=> {
   req.room.gamestate = game.STATE_PROMPTING;
   req.room.currentprompt = game.prompts[Math.floor(Math.random()*game.prompts.length)].text;
-  req.room.roundnumber= 0;
+  req.room.roundnumber= 1;
   req.room.save((err,room)=> {
     res.send({});
     sendRoomStateChange(req, room);

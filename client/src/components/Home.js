@@ -12,7 +12,7 @@ class Home extends Component {
     return (
       <div className="App-header">
         <h2>{"Welcome to HotTake."}</h2>
-        <h4>{"Some funny slogan"}</h4>
+        <h4>{"The game for when you just want to shoot the sh*t with your friends."}</h4>
         {/* <button type="button" className="btn btn-outline-warning give-padding" onClick={this.goToAuth}>Sign in with Google</button> */}
         <div className="signupbutton">
           <a href="/auth/google"  className="btn btn-light"> Sign up with Google</a>
