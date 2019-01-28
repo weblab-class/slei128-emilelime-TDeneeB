@@ -472,6 +472,115 @@ color: white;
 line-height: 1.1;
 }
 
+/*Leaderboard*/
+.leaderboard-page {
+  padding: 20px;
+}
+.all-cards {
+  display:flex;
+  overflow: auto;
+  flex-wrap: wrap;
+}
+.top-bar {
+  background-color: #1D2126;
+  color: #F8F9FA;
+  font-size: 20px;
+  font-weight: 350;
+  color: white;
+  line-height: 1.1;
+  padding: 20px 0px 20px 40px;
+}
+.card {
+  background-color: #F8F9FA;
+  /* position: relative; */
+  min-width: 360px;
+  padding: 1px;
+  margin: 0 0 30px 0;
+  /* background: linear-gradient(to bottom right, #EDEDEC 10%, white 50%); */
+  border: none;
+  border-radius: 25px;
+  transition: 0.2rem 0.8rem 1.6rem 300ms;
+  box-shadow: 15px 15px 30px rgba(0,0,0,0.5);
+}
+.by {
+  font-size: 30px;
+font-weight: 700;
+padding-top: 18px;
+padding-left: 30px;
+}
+
+.votesfor {
+  display: inline-flex;
+  font-size: 14px;
+  margin: 0 0 40px 0;
+}
+
+.totalp {
+
+  position: relative;
+font-size: 15px;
+font-weight: 500;
+padding-left: 94px;
+margin-right: 6px;
+}
+.numhottakes {
+  font-size: 15px;
+  font-weight: 500;
+}
+.nexthottake {
+  margin-left: 20px;
+}
+
+.numVotesThisRound {
+  border-radius: 50px;
+padding-top: 6px;
+padding-left: 13px;
+padding-right: 9px;
+margin-top: 13px;
+margin-left: 30px;
+background-color: #1D2126;
+font-weight: 500;
+font-size: 23px;
+color: #F8F9FA;
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+}
+
+.quote {
+  margin-top: -30px;
+      font-size: 23px;
+      font-weight: 800;
+      margin-left: 30px;
+      /* flex-wrap: wrap; */
+      /* overflow-wrap: break-word; */
+      /* word-wrap: break-word; */
+      max-width: 320px;
+      line-height: 1.2;
+}
+.usersname {
+  margin-left: 5px;
+}
+.totalVotes {
+  font-size: 15px;
+}
+
+.usericon-small {
+  border-radius: 25px;
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.row-here {
+  height: 60px;
+}
+
+.votesfor {
+  margin-left: 20px;
+  margin-right: 1px;
+  margin-top: 20px;
+}
+
 h1 { color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; }
 h2 {color: white; padding: 20px;}
 h3 { color: white;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; }

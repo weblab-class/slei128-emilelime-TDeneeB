@@ -23,7 +23,7 @@ class NavBar extends Component {
                 ) : (
                     <React.Fragment>
 
-                      <Link to={"/"} className="nav-item nav-link">Profile</Link>
+                      <Link to={"/"} className="nav-item nav-link">Home</Link>
                       <a className="nav-item nav-link" href="/logout" onClick={this.props.logout}>Logout</a>
                     </React.Fragment>
                 )}

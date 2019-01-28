@@ -39,8 +39,11 @@ class LeaderBoard extends React.Component {
 
     return (
       <div>
-        {cards.map(card => (
+      <div className = "top-bar">Round Reveals 🔥</div>
+      <div className="leaderboard-page">
 
+        <div className = "all-cards">
+          {cards.map(card => (
             <Card
               author={card.author}
               key={`Card_${card.userid}`}
@@ -49,10 +52,13 @@ class LeaderBoard extends React.Component {
               totalVotes={card.totalVotes}
               usersThatVoted = {card.usersThatVoted}
             />
-
-        ))}
-        <button className="btn btn-light"onClick={this.nextRound}>Next Round of HotTakes 💦</button>
+          ))}
+        </div>
+        <div>
+          <button className="btn btn-light nexthottake" onClick={this.nextRound}>Next Round of HotTakes 💦</button>
+        </div>
       </div>
+    </div>
     );
   }
 }

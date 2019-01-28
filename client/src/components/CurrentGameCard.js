@@ -35,7 +35,7 @@ class CurrentGameCard extends React.Component {
             <p className="players-in-game">{this.state.game.users.map(u => u.name.split(" ")[0]).join(", ")}</p>
             <div className="cardbottom">
               <div className="emoji">🎯 <span className="roundnumber">{this.state.game.roundnumber}</span></div>
-              <div className="emoji">🔥 <span className="leaderName">{leaderName}</span><span className="points">{", "+ leaderScore +" pts"}</span></div>
+              <div className="emoji">🔥 <span className="leaderName">{leaderName}</span><span className="points">{", "+ leaderScore +" hottakes"}</span></div>
               <Link to={`/game/${this.state.game.roomid}`} className="playButton">Play</Link>
             </div>
           </div>
