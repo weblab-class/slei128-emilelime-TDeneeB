@@ -61,31 +61,37 @@ class Vote extends React.Component {
 
   render() {
     return (this.waitingOnUser(this.props.userInfo._id) ? (
-      <div className="vote">
-        <Prompt promptText={this.props.game.currentprompt}/>
-        <div className="cardHolder">
-          {this.inputs.map((input) => (
-            <div
-              key={input.number}
-              className={"inputCard " +
-                (input.number<this.state.whichInput?'offscreen ':'') +
-                (input.number==this.state.whichInput?'hasfocus ':'')}
-              style={input.style}
-            >
-              {input.text}
-            </div>
-          ))}
-          <button className="floating-button btn-prev scroll-button-flipped" onClick={this.prev}></button>
-          <button className="floating-button btn-vote" onClick={this.vote}>🔥</button>
-          <button className="floating-button btn-next scroll-button" onClick={this.next}></button>
+      <div>
+        <div className = "top-bar">Time to judge your friends humor 😎 <span className="game-tracker">Team <span className="actualteamname">{this.props.game.teamname}</span>  |  Round 🎯<span className="actualteamname">{this.props.game.roundnumber}</span></span></div>
+        <div className="vote">
+          <Prompt promptText={this.props.game.currentprompt}/>
+          <div className="cardHolder">
+            {this.inputs.map((input) => (
+              <div
+                key={input.number}
+                className={"inputCard " +
+                  (input.number<this.state.whichInput?'offscreen ':'') +
+                  (input.number==this.state.whichInput?'hasfocus ':'')}
+                style={input.style}
+              >
+                "{input.text}"
+              </div>
+            ))}
+            <button className="floating-button btn-prev scroll-button-flipped" onClick={this.prev}></button>
+            <button className="floating-button btn-vote" onClick={this.vote}>🔥</button>
+            <button className="floating-button btn-next scroll-button" onClick={this.next}></button>
+          </div>
         </div>
       </div>
     ) : (
-      <Waiting
-        users={this.props.users}
-        waitingOnUser={this.waitingOnUser}
-        message="Got your vote. Waiting for all ballots to roll in..."
-      />
+      <div>
+        <div className = "top-bar">Waiting on delinquents 🤦‍♂️...| Team {this.props.game.teamname} | Round {this.props.game.roundnumber}</div>
+        <Waiting
+          users={this.props.users}
+          waitingOnUser={this.waitingOnUser}
+          message="Got your vote. Waiting for all ballots to roll in..."
+        />
+      </div>
     ));
   }
 }

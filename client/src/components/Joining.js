@@ -42,6 +42,8 @@ class Joining extends React.Component {
   render() {
     console.log(this.props.game.users);
     return (
+      <div>
+      <div className = "top-bar">Getting your team set up 👯</div>
       <div className="joining">
         <div className="container">
           <div className="row">
@@ -78,6 +80,7 @@ class Joining extends React.Component {
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }

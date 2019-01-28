@@ -81,7 +81,7 @@ class Profile extends Component {
 
         <div>
           <div className="divider">
-            <h1>Your current games.</h1>
+            <h1>Your current games 💸</h1>
             <h3>Pick up where you left off.</h3>
           </div>
           <div className="profile-body">

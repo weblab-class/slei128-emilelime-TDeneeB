@@ -1,6 +1,7 @@
 /* body > #root > div {
   height: 100vh;
 } */
+/* animation colors: pink #9b3658, dark grey #282c34 */
 * {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal; font-variant: normal;
@@ -42,6 +43,12 @@ text {
   /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
+  background: linear-gradient(119deg, #282c34, #9b3658);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 18s ease infinite;
+  -moz-animation: AnimationName 18s ease infinite;
+  animation: AnimationName 18s ease infinite;
 }
 
 .center{
@@ -54,7 +61,15 @@ text {
     display: flex;
     flex-direction: column;
 }
-
+.game-tracker {
+  float: right;
+  padding-right: 40px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.actualteamname {
+  font-weight:400;
+}
 /* PROMPTING input */
 .prompting, .vote {
   display: flex;
@@ -116,7 +131,7 @@ text {
 
 .input-text:focus {
   outline: none;
-  box-shadow: 0.2rem 0.8rem 1.6rem #5e35b1;
+  box-shadow: 0.2rem 0.8rem 1.6rem #9b3658;
 }
 
 /* VOTE */
@@ -278,7 +293,14 @@ line-height: 1.1;
 
 .profile-header {
   background-color: #282c34;
-  margin: 0 60px;
+  padding: 0 60px;
+  background: linear-gradient(119deg, #282c34, #9b3658);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 18s ease infinite;
+  -moz-animation: AnimationName 18s ease infinite;
+  animation: AnimationName 18s ease infinite;
+
 }
 .profile-header .col-sm-4, .profile-header .col-sm-8 {
   margin: 60px 0;
@@ -304,6 +326,7 @@ line-height: 1.1;
   height: 80%;
   display: flex;
   overflow-x: auto;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .players-in-game {
@@ -481,6 +504,23 @@ line-height: 1.1;
   overflow: auto;
   flex-wrap: wrap;
 }
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 15%}
+    50%{background-position:100% 86%}
+    100%{background-position:0% 15%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 15%}
+    50%{background-position:100% 86%}
+    100%{background-position:0% 15%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 15%}
+    50%{background-position:100% 86%}
+    100%{background-position:0% 15%}
+}
+
 .top-bar {
   background-color: #1D2126;
   color: #F8F9FA;
@@ -489,6 +529,17 @@ line-height: 1.1;
   color: white;
   line-height: 1.1;
   padding: 20px 0px 20px 40px;
+
+  background: linear-gradient(119deg, #282c34, #9b3658);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 18s ease infinite;
+  -moz-animation: AnimationName 18s ease infinite;
+  animation: AnimationName 18s ease infinite;
+}
+.votess {
+  font-weight:400px;
+  font-size: 24px;
 }
 .card {
   background-color: #F8F9FA;
