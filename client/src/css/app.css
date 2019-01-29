@@ -19,11 +19,161 @@ text {
   color: white;
 }
 
+
 .app {
   background-color: #272C34;
   height: 100%;
   min-height: 100vh;
   overflow: hidden;
+}
+
+.page {
+  background: linear-gradient(55deg, #dc3b22, #fd0363);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 5s ease infinite;
+  -moz-animation: AnimationName 5s ease infinite;
+  animation: AnimationName 5s ease infinite;
+}
+.first-section {
+  height: 100vh;
+  position: relative;
+  padding-top: 5vh;
+}
+
+.hover-box {
+  display: block;
+  width: 50vw;
+  height: 30vw;
+  font-size: 5vw;
+  padding: 5vw;
+  color: #86888C;
+  /* background-color: white; */
+  border: none;
+  border-radius: 2vw;
+  transition: 0.2rem 0.8rem 1.6rem 300ms;
+  resize: none;
+  overflow: visible;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vw;
+  transform: translateY(-35vw) rotate(4.5deg);
+  z-index:5;
+}
+
+.hover-box:hover>.display-card-with-title {
+  transform: translateX(100vw) translateY(-300px) rotate(90deg);
+}
+.display-card-with-title {
+  display: block;
+  width: 50vw;
+  height: 30vw;
+  font-size: 5vw;
+  padding: 5vw;
+  color: #1D2126;
+  background-color: white;
+  border: none;
+  border-radius: 2vw;
+  resize: none;
+  overflow: auto;
+  font-size: 5vw;
+  font-weight: 800;
+  color: #86888C;
+  line-height: 1.1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vw;
+  transform: translate(-10%, -33%);
+  z-index:5;
+  transition: transform 1.5s;
+
+
+ box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
+
+}
+.display-card-with-slogan{
+  display: block;
+  width: 50vw;
+  height: 30vw;
+  font-size: 5vw;
+  padding: 5vw;
+  color: #86888C;
+  background-color: white;
+  border: none;
+  border-radius: 2vw;
+  transition: 0.2rem 0.8rem 1.6rem 300ms;
+  resize: none;
+  overflow: auto;
+  font-size: 5vw;
+  font-weight: 800;
+  color: #86888C;
+  line-height: 1.1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vw;
+  transform: translateY(4vw) rotate(-8deg);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
+
+}
+.signupbutton {
+  position: absolute;
+  background-image: url(/googlelogo2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  bottom: 100px;
+  left: 50%;
+  margin-left: -120px;
+  width: 240px;
+  height: 60px;
+  cursor: pointer;
+}
+.signupbutton a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.title {
+  font-size: 6vw;
+  font-weight: 800;
+  color: #292C33;
+  line-height: 1.1;
+}
+.second-section {
+  padding: 7vw;
+  position: center;
+  color: white;
+  /* margin-left: auto;
+  margin-right: auto; */
+  background-color: #3B4757;
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+.section-text{
+  font-size: 1.4vh;
+
+}
+
+.section-header {
+  font-size: 1.6vh;
+  font-weight: 600;
+  margin-bottom: 2vw;
+  text-align: center;
+}
+.footer {
+  font-size: 10px;
+  color: white;
+  padding:2vw;
+  text-align: right;
+  position: bottom;
+}
+.centering {
+  text-align:left;
+  margin: 0 auto;
+  position: center;
+}
+.column-padding {
+  padding: 2vw;
 }
 
 .navbar-nav {
@@ -43,12 +193,12 @@ text {
   /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
-  background: linear-gradient(119deg, #282c34, #9b3658);
-  background-size: 400% 400%;
+  background: linear-gradient(109deg, #953556, #46264c);
+background-size: 400% 400%;
 
-  -webkit-animation: AnimationName 18s ease infinite;
-  -moz-animation: AnimationName 18s ease infinite;
-  animation: AnimationName 18s ease infinite;
+-webkit-animation: AnimationName 30s ease infinite;
+-moz-animation: AnimationName 30s ease infinite;
+animation: AnimationName 30s ease infinite;
 }
 
 .center{
@@ -106,6 +256,7 @@ text {
   overflow: auto;
   box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
 }
+
 .prompting .send-button {
   right: 0;
   bottom: 0;
@@ -163,16 +314,16 @@ text {
 
 .vote .btn-prev {
   top: 15vw;
-  left: -120px;
+  left: calc(-50% + 11vw);
 }
 .vote .btn-next {
   top: 15vw;
-  right: -120px;
+  right: calc(-50% + 11vw);
 }
 .vote .btn-vote {
-  top: 30vw;
-  right: -120px;
-  font-size: 30px;
+  top: 34vw;
+  right: calc(-50% + 11vw);
+  font-size: 35px;
 }
 .vote .scroll-button-flipped {
   transform: scaleX(-1);
@@ -247,7 +398,6 @@ form.inlineForm {
     background: none;
     border: none;
     color: white;
-    margin-left: .3em;
     outline: none !important;
     display: inline;
         width: 270px;
@@ -282,12 +432,12 @@ line-height: 1.1;
 .profile-header {
   background-color: #282c34;
   padding: 0 60px;
-  background: linear-gradient(119deg, #282c34, #9b3658);
-  background-size: 400% 400%;
+  background: linear-gradient(109deg, #953556, #46264c);
+background-size: 400% 400%;
 
-  -webkit-animation: AnimationName 18s ease infinite;
-  -moz-animation: AnimationName 18s ease infinite;
-  animation: AnimationName 18s ease infinite;
+-webkit-animation: AnimationName 30s ease infinite;
+-moz-animation: AnimationName 30s ease infinite;
+animation: AnimationName 30s ease infinite;
 
 }
 .profile-header .col-sm-4, .profile-header .col-sm-8 {
@@ -490,6 +640,7 @@ line-height: 1.1;
 .all-cards {
   display:flex;
   overflow: auto;
+  overflow-x: hidden;
   flex-wrap: wrap;
 }
 .leaderboard-prompt {
@@ -523,7 +674,7 @@ text-align: center;
   border-radius: 20px;
   margin: 15px;
   color: #F8F9FA;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 350;
   color: white;
   line-height: 1.1;
@@ -544,7 +695,9 @@ text-align: center;
 .card {
   background-color: #F8F9FA;
   /* position: relative; */
-  min-width: 360px;
+  max-width: 360px;
+  width: 30vw;
+  min-width: 310px;
   padding: 1px;
   margin: 0 0 30px 0;
   /* background: linear-gradient(to bottom right, #EDEDEC 10%, white 50%); */
@@ -584,16 +737,18 @@ margin-right: 6px;
 
 .numVotesThisRound {
   border-radius: 50px;
-padding-top: 6px;
-padding-left: 13px;
-padding-right: 9px;
-margin-top: 13px;
-margin-left: 30px;
-background-color: #1D2126;
-font-weight: 500;
-font-size: 23px;
-color: #F8F9FA;
-    box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+  padding-top: 6px;
+  padding-left: 13px;
+  padding-right: 9px;
+  padding-bottom: 8px;
+  top: 13px;
+  right: 14px;
+  position: absolute;
+  background-color: #1D2126;
+  font-weight: 500;
+  font-size: 23px;
+  color: #F8F9FA;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.5)
 }
 
 .quote {

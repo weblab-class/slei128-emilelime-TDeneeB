@@ -12,7 +12,7 @@ class NavBar extends Component {
         return (
           <nav className="navbar navbar-light bg-light">
             <div className="navbar-brand">
-            HotTake
+            HotTake.
             </div>
             <div className="navbar-nav">
                 { this.props.userInfo === null ? (
